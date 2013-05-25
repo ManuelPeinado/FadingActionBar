@@ -1,4 +1,4 @@
-MultiChoiceAdapter
+FadingActionBar
 ==================
 
 FadingActionBar is a library which helps implement the effect of an action bar that fades in as the content of the activity is scrolled down, as in the new Play Music app.
@@ -85,14 +85,5 @@ License
 
 
 
- [1]: http://developer.android.com/reference/android/widget/AbsListView.MultiChoiceModeListener.html
- [2]: http://actionbarsherlock.com
- [3]: https://raw.github.com/ManuelPeinado/MultiChoiceAdapter/master/art/readme_pic.png
- [4]: https://play.google.com/store/apps/details?id=com.manuelpeinado.multichoiceadapter.demo
- [5]: https://github.com/ManuelPeinado/MultiChoiceAdapter/tree/master/sample
- [6]: https://github.com/TimotheeJeannin/ProviGen
- [7]: https://play.google.com/store/apps/details?id=com.projectsexception.myapplist
- [8]: https://github.com/ManuelPeinado/MultiChoiceAdapter/wiki/MultiChoiceArrayAdapter-tutorial
- [9]: https://github.com/ManuelPeinado/MultiChoiceAdapter/wiki/MultiChoiceBaseAdapter-tutorial
- [10]: https://github.com/ManuelPeinado/MultiChoiceAdapter/wiki/MultiChoiceSimpleCursorAdapter-tutorial
- [11]: https://github.com/ManuelPeinado/MultiChoiceAdapter/wiki/Gallery-tutorial
+ [1]: https://raw.github.com/ManuelPeinado/FadingActionBar/master/art/readme_pic.png
+
