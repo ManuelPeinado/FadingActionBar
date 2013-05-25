@@ -5,9 +5,9 @@ FadingActionBar is a library which implements the cool fading action bar effect 
 
 This library uses the techniques outlined by Cyril Mottier in [a recent blog post][1].
 
-For reasons of backwards compatibility this library relies on ActionBarSherlock, but it should be really easy to port it to the native action bar. 
+For reasons of backwards compatibility this library relies on ActionBarSherlock. If your app uses the native action bar, there is [a fork][2] for you.
 
-![Example Image][2]
+![Example Image][3]
 
 Try out the sample application:
 
@@ -16,7 +16,7 @@ Try out the sample application:
        src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
 
-Or browse the [source code of the sample application][3] for a complete example of use.
+Or browse the [source code of the sample application][4] for a complete example of use.
 
 Including in your project
 -------------------------
@@ -30,8 +30,8 @@ Usage
 
 Using the library is really simple, just look at the source code of the provided samples:
 
-* [If your content should be in a `ScrollView`][4].
-* [If your content should be in a `ListView`][5].
+* [If your content should be in a `ScrollView`][5].
+* [If your content should be in a `ListView`][6].
 
 Tutorials for both scenarios are in the works.
 
@@ -88,8 +88,9 @@ License
 
 
  [1]: http://cyrilmottier.com/2013/05/24/pushing-the-actionbar-to-the-next-level/
- [2]: https://raw.github.com/ManuelPeinado/FadingActionBar/master/art/readme_pic.png
- [3]: https://github.com/ManuelPeinado/FadingActionBar/tree/master/sample
- [4]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/ScrollViewActivity.java
- [5]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/ListViewActivity.java
+ [2]: https://raw.github.com/ManuelPeinado/FadingActionBar-Native
+ [3]: https://raw.github.com/ManuelPeinado/FadingActionBar/master/art/readme_pic.png
+ [4]: https://github.com/ManuelPeinado/FadingActionBar/tree/master/sample
+ [5]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/ScrollViewActivity.java
+ [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/ListViewActivity.java
 
