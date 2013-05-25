@@ -24,14 +24,17 @@
         </activity>
         <activity
             android:name="com.manuelpeinado.fadingactionbar.demo.ScrollViewActivity"
+            android:icon="@drawable/ic_location_map"
             android:label="@string/new_york_city"
             android:theme="@style/AppTheme.TranslucentActionBar" />
         <activity
             android:name="com.manuelpeinado.fadingactionbar.demo.ListViewActivity"
+            android:icon="@drawable/ic_location_map"
             android:label="@string/new_york_city"
             android:theme="@style/AppTheme.TranslucentActionBar" />
         <activity
             android:name="com.manuelpeinado.fadingactionbar.demo.LightBackgroundActivity"
+            android:icon="@drawable/ic_location_map"
             android:label="@string/new_york_city"
             android:theme="@style/AppTheme.TranslucentActionBar" />
     </application>
