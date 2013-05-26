@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.manuelpeinado.fadingactionbar.demo"
     android:versionCode="3"
-    android:versionName="1.0.2" >
+    android:versionName="1.0.3-SNAPSHOT" >
 
     <uses-sdk
         android:minSdkVersion="7"
@@ -37,6 +37,11 @@
             android:icon="@drawable/ic_location_map"
             android:label="@string/new_york_city"
             android:theme="@style/AppTheme.TranslucentActionBar" />
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.demo.LightActionBarActivity"
+            android:icon="@drawable/ic_location_map_dark"
+            android:label="@string/new_york_city"
+            android:theme="@style/AppTheme.Light.TranslucentActionBar" />
     </application>
 
 </manifest>
