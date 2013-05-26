@@ -23,7 +23,16 @@ Including in your project
 
 Just add the library to your application as a library project. And don't forget that your project must use ActionBarSherlock!
 
-Maven integration will come soon.
+Or if you use maven, add the following dependency to your pom:
+
+```xml
+<dependency>
+    <groupId>com.github.manuelpeinado.fadingactionbar</groupId>
+    <artifactId>fadingactionbar</artifactId>
+    <version>1.0.2</version>
+    <type>apklib</type>
+</dependency>
+```
 
 Usage
 ---------
