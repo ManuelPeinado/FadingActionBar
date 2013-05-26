@@ -1,6 +1,7 @@
 package com.manuelpeinado.fadingactionbar;
 
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class FadingActionBarHelper {
         mHeaderContainer = (FrameLayout) mActivity.findViewById(R.id.header_container);
         View header = inflater.inflate(headerResId, mHeaderContainer, false);
         mHeaderContainer.addView(header, 0);
+        
+        addDrawableCallback();
     }
 
     private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
@@ -61,6 +64,8 @@ public class FadingActionBarHelper {
         listView.addHeaderView(mHeaderContainer, null, false);
 
         listView.setOnScrollListener(mOnScrollListener);
+        
+        addDrawableCallback();
     }
 
     private OnScrollListener mOnScrollListener = new OnScrollListener() {
@@ -80,7 +85,7 @@ public class FadingActionBarHelper {
         public void onScrollStateChanged(AbsListView view, int scrollState) {
         }
     };
-    
+
     private void onNewScroll(int scrollPosition) {
         int headerHeight = mHeaderContainer.getMeasuredHeight() - mActionBar.getHeight();
         float ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
@@ -88,4 +93,24 @@ public class FadingActionBarHelper {
         mActionBarBackgroundDrawable.setAlpha(newAlpha);
     }
 
+    private void addDrawableCallback() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            mActionBarBackgroundDrawable.setCallback(mDrawableCallback);
+        }
+    }
+
+    private Drawable.Callback mDrawableCallback = new Drawable.Callback() {
+        @Override
+        public void invalidateDrawable(Drawable who) {
+            mActionBar.setBackgroundDrawable(who);
+        }
+
+        @Override
+        public void scheduleDrawable(Drawable who, Runnable what, long when) {
+        }
+
+        @Override
+        public void unscheduleDrawable(Drawable who, Runnable what) {
+        }
+    };
 }
