@@ -4,17 +4,18 @@ import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
-import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
+import com.manuelpeinado.fadingactionbar.FadingActionBar;
 
 public class LightBackgroundActivity extends SherlockActivity {
-    private FadingActionBarHelper mFadingActionBarHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mFadingActionBarHelper = new FadingActionBarHelper(this, R.drawable.ab_background);
-        mFadingActionBarHelper.setScrollViewContent(R.layout.header_light, R.layout.activity_scrollview);
+        new FadingActionBar.ScrollViewHelper()
+        .actionBarBackground(R.drawable.ab_background)
+        .headerLayout(R.layout.header_light)
+        .contentLayout(R.layout.activity_scrollview)
+        .apply(this);
     }
 
     @Override

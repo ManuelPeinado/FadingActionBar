@@ -12,19 +12,20 @@ import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
-import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
+import com.manuelpeinado.fadingactionbar.FadingActionBar;
 
 public class ListViewActivity extends SherlockActivity {
-    protected static final String LOGTAG = "ListViewActivity";
-    private FadingActionBarHelper mFadingActionBarHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        mFadingActionBarHelper = new FadingActionBarHelper(this, R.drawable.ab_background);
-        mFadingActionBarHelper.setListViewContent(R.layout.header, R.layout.activity_listview);
-        
+        new FadingActionBar.ListViewHelper()
+            .actionBarBackground(R.drawable.ab_background)
+            .headerLayout(R.layout.header)
+            .contentLayout(R.layout.activity_listview)
+            .apply(this);
+
         ListView listView = (ListView) findViewById(android.R.id.list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, loadItems());
         listView.setAdapter(adapter);
