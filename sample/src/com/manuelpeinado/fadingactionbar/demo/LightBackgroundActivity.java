@@ -11,7 +11,7 @@ public class LightBackgroundActivity extends SherlockActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new FadingActionBar.Initializer()
+        new FadingActionBar.ActivityHelper()
         .actionBarBackground(R.drawable.ab_background)
         .headerLayout(R.layout.header_light)
         .contentLayout(R.layout.activity_scrollview)

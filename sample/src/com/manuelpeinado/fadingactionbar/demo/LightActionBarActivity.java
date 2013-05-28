@@ -12,7 +12,7 @@ public class LightActionBarActivity extends SherlockActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        new FadingActionBar.Initializer()
+        new FadingActionBar.ActivityHelper()
             .actionBarBackground(R.drawable.ab_background_light)
             .headerLayout(R.layout.header_light)
             .contentLayout(R.layout.activity_scrollview)

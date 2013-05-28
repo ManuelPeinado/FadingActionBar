@@ -19,7 +19,7 @@ import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
 
 public class FadingActionBar {
 
-    public static class Initializer {
+    public static class ActivityHelper {
         private Drawable mActionBarBackgroundDrawable;
         private FrameLayout mHeaderContainer;
         private int mActionBarBackgroundResId;
@@ -31,32 +31,32 @@ public class FadingActionBar {
         private LayoutInflater mInflater;
         private boolean mLightActionBar;
 
-        public Initializer actionBarBackground(int drawableResId) {
+        public ActivityHelper actionBarBackground(int drawableResId) {
             mActionBarBackgroundResId = drawableResId;
             return this;
         }
 
-        public Initializer actionBarBackground(Drawable drawable) {
+        public ActivityHelper actionBarBackground(Drawable drawable) {
             mActionBarBackgroundDrawable = drawable;
             return this;
         }
 
-        public Initializer headerLayout(int layoutResId) {
+        public ActivityHelper headerLayout(int layoutResId) {
             mHeaderLayoutResId = layoutResId;
             return this;
         }
 
-        public Initializer headerView(View view) {
+        public ActivityHelper headerView(View view) {
             mHeaderView = view;
             return this;
         }
 
-        public Initializer contentLayout(int layoutResId) {
+        public ActivityHelper contentLayout(int layoutResId) {
             mContentLayoutResId = layoutResId;
             return this;
         }
 
-        public Initializer contentView(View view) {
+        public ActivityHelper contentView(View view) {
             mContentView = view;
             return this;
         }

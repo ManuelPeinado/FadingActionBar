@@ -20,7 +20,7 @@ public class ListViewActivity extends SherlockActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        new FadingActionBar.Initializer()
+        new FadingActionBar.ActivityHelper()
                 .actionBarBackground(R.drawable.ab_background)
                 .headerLayout(R.layout.header)
                 .contentLayout(R.layout.activity_listview)
