@@ -89,7 +89,7 @@ public class FadingActionBar {
             //
             // See if we are in a ListView or ScrollView scenario
 
-            ListView listView = (ListView) activity.findViewById(android.R.id.list);
+            ListView listView = (ListView) mContentView.findViewById(android.R.id.list);
             if (listView != null) {
                 applyListView(activity, listView);
             } else {
