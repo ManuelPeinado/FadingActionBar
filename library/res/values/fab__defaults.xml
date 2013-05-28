@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default value for the fabLightActionBar attribute -->
+    <item name="fab__default_light_action_bar" type="bool">false</item>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="fadingActionBarStyle" format="reference" />
+
+    <declare-styleable name="FadingActionBar">
+
+        <!-- Default is "false" -->
+        <attr name="fabLightActionBar" format="boolean" />
+    </declare-styleable>
+
+</resources>

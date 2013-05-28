@@ -1,5 +1,7 @@
 package com.manuelpeinado.fadingactionbar;
 
+import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -27,6 +29,7 @@ public class FadingActionBar {
         private View mContentView;
         private ActionBar mActionBar;
         private LayoutInflater mInflater;
+        private boolean mLightActionBar;
 
         public Initializer actionBarBackground(int drawableResId) {
             mActionBarBackgroundResId = drawableResId;
@@ -59,7 +62,11 @@ public class FadingActionBar {
         }
 
         public void apply(SherlockActivity activity) {
+            //
             // Prepare everything
+
+            parseAttrs(activity);
+
             mInflater = LayoutInflater.from(activity);
             mActionBar = activity.getSupportActionBar();
             if (mActionBarBackgroundDrawable == null) {
@@ -79,13 +86,26 @@ public class FadingActionBar {
                 mHeaderView = inflater.inflate(mHeaderLayoutResId, mHeaderContainer, false);
             }
 
+            //
             // See if we are in a ListView or ScrollView scenario
+
             ListView listView = (ListView) activity.findViewById(android.R.id.list);
             if (listView != null) {
                 applyListView(activity, listView);
             } else {
                 applyScrollView(activity);
             }
+        }
+
+        private void parseAttrs(Context context) {
+            // Get defaults
+            boolean lightActionBarDefault = context.getResources().getBoolean(R.bool.fab__default_light_action_bar);
+
+            // Extract theme attributes
+            TypedArray ta = context.obtainStyledAttributes(null, R.styleable.FadingActionBar, R.attr.fadingActionBarStyle,
+                    0);
+            mLightActionBar = ta.getBoolean(R.styleable.FadingActionBar_fabLightActionBar, lightActionBarDefault);
+            ta.recycle();
         }
 
         private Drawable.Callback mDrawableCallback = new Drawable.Callback() {
@@ -104,14 +124,15 @@ public class FadingActionBar {
         };
 
         private void applyScrollView(SherlockActivity activity) {
-            activity.setContentView(R.layout.scrollview_container);
+            activity.setContentView(R.layout.fab__scrollview_container);
 
-            NotifyingScrollView scrollView = (NotifyingScrollView) activity.findViewById(R.id.scroll_view);
+            NotifyingScrollView scrollView = (NotifyingScrollView) activity.findViewById(R.id.fab__scroll_view);
             scrollView.setOnScrollChangedListener(mOnScrollChangedListener);
 
-            ViewGroup container = (ViewGroup) activity.findViewById(R.id.container);
+            ViewGroup container = (ViewGroup) activity.findViewById(R.id.fab__container);
             container.addView(mContentView);
-            mHeaderContainer = (FrameLayout) activity.findViewById(R.id.header_container);
+            mHeaderContainer = (FrameLayout) activity.findViewById(R.id.fab__header_container);
+            initializeGradient(mHeaderContainer);
             mHeaderContainer.addView(mHeaderView, 0);
         }
 
@@ -124,7 +145,8 @@ public class FadingActionBar {
         private void applyListView(SherlockActivity activity, ListView listView) {
             activity.setContentView(mContentView);
 
-            mHeaderContainer = (FrameLayout) mInflater.inflate(R.layout.header_container, null);
+            mHeaderContainer = (FrameLayout) mInflater.inflate(R.layout.fab__header_container, null);
+            initializeGradient(mHeaderContainer);
             mHeaderContainer.addView(mHeaderView, 0);
             listView.addHeaderView(mHeaderContainer, null, false);
 
@@ -154,6 +176,15 @@ public class FadingActionBar {
             float ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
             int newAlpha = (int) (ratio * 255);
             mActionBarBackgroundDrawable.setAlpha(newAlpha);
+        }
+
+        private void initializeGradient(ViewGroup headerContainer) {
+            View gradientView = headerContainer.findViewById(R.id.fab__gradient);
+            int gradient = R.drawable.fab__gradient;
+            if (mLightActionBar) {
+                gradient = R.drawable.fab__gradient_light;
+            }
+            gradientView.setBackgroundResource(gradient);
         }
     }
 }

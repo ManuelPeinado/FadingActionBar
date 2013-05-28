@@ -3,7 +3,9 @@
 
     <style name="Widget.ActionBar" parent="@style/Widget.Sherlock.Light.ActionBar.Solid.Inverse">
     </style>
-
+	
+	<style name="Widget.Light" />
+	
     <style name="Widget.Light.ActionBar" parent="@style/Widget.Sherlock.Light.ActionBar.Solid">
     </style>
 
@@ -16,5 +18,9 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="background">@android:color/transparent</item>
     </style>
-
+    
+    <style name="Widget.Light.FadingActionBar">
+        <item name="fabLightActionBar">true</item>
+    </style>
+    
 </resources>

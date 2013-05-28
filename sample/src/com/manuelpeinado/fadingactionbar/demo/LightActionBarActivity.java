@@ -14,7 +14,7 @@ public class LightActionBarActivity extends SherlockActivity {
 
         new FadingActionBar.Initializer()
             .actionBarBackground(R.drawable.ab_background_light)
-            .headerLayout(R.layout.header)
+            .headerLayout(R.layout.header_light)
             .contentLayout(R.layout.activity_scrollview)
             .apply(this);
     }

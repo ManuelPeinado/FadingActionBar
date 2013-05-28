@@ -5,11 +5,6 @@
         <item name="actionBarStyle">@style/Widget.ActionBar</item>
     </style>
 
-    <style name="AppTheme.Light" parent="Theme.Sherlock.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/Widget.Light.ActionBar</item>
-        <item name="actionBarStyle">@style/Widget.Light.ActionBar</item>
-    </style>
-    
     <style name="AppTheme.TranslucentActionBar">
         <item name="android:actionBarStyle">@style/Widget.ActionBar.Transparent</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -17,11 +12,12 @@
         <item name="windowActionBarOverlay">true</item>
     </style>
     
-    <style name="AppTheme.Light.TranslucentActionBar">
+    <style name="AppTheme.Light.TranslucentActionBar" parent="Theme.Sherlock.Light">
         <item name="android:actionBarStyle">@style/Widget.Light.ActionBar.Transparent</item>
         <item name="android:windowActionBarOverlay">true</item>
         <item name="actionBarStyle">@style/Widget.Light.ActionBar.Transparent</item>
         <item name="windowActionBarOverlay">true</item>
+        <item name="fadingActionBarStyle">@style/Widget.Light.FadingActionBar</item>
     </style>
     
 </resources>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/header_container"
+    android:id="@+id/fab__header_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
     <View
+        android:id="@+id/fab__gradient"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/gradient" />
+        android:layout_height="100dp" />
 
 </FrameLayout>
