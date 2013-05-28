@@ -19,8 +19,4 @@
         <item name="background">@android:color/transparent</item>
     </style>
     
-    <style name="Widget.Light.FadingActionBar">
-        <item name="fabLightActionBar">true</item>
-    </style>
-    
 </resources>

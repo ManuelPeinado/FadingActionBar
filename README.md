@@ -35,15 +35,17 @@ Or if you use maven, add the following dependency to your pom:
 ```
 
 Usage
----------
+-----
 
 Using the library is really simple, just look at the source code of the provided samples:
 
 * [If your content should be in a `ScrollView`][5].
 * [If your content should be in a `ListView`][6].
 
-Tutorials for both scenarios are in the works.
+You can even use the library [from a fragment][7], which is useful when implementing a dual phone/tablet layout.
 
+
+*Tutorials for all these scenarios are in the works*
 
 
 Acknowledgements
@@ -102,4 +104,6 @@ License
  [4]: https://github.com/ManuelPeinado/FadingActionBar/tree/master/sample
  [5]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/ScrollViewActivity.java
  [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/ListViewActivity.java
+ [7]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
+
 

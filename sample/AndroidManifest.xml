@@ -42,6 +42,11 @@
             android:icon="@drawable/ic_location_map_dark"
             android:label="@string/new_york_city"
             android:theme="@style/AppTheme.Light.TranslucentActionBar" />
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.demo.SampleFragmentActivity"
+            android:icon="@drawable/ic_location_map_dark"
+            android:label="@string/new_york_city"
+            android:theme="@style/AppTheme.Light.TranslucentActionBar" />
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
-import com.manuelpeinado.fadingactionbar.FadingActionBar;
+import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 
 public class ListViewActivity extends SherlockActivity {
 
@@ -20,11 +20,12 @@ public class ListViewActivity extends SherlockActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        new FadingActionBar.ActivityHelper()
-                .actionBarBackground(R.drawable.ab_background)
-                .headerLayout(R.layout.header)
-                .contentLayout(R.layout.activity_listview)
-                .apply(this);
+        FadingActionBarHelper helper = new FadingActionBarHelper()
+            .actionBarBackground(R.drawable.ab_background)
+            .headerLayout(R.layout.header)
+            .contentLayout(R.layout.activity_listview);
+        setContentView(helper.createView(this));
+        helper.initActionBar(this);
 
         ListView listView = (ListView) findViewById(android.R.id.list);
         ArrayList<String> items = loadItems(R.raw.nyc_sites);
