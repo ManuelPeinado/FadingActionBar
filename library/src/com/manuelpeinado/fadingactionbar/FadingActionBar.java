@@ -17,18 +17,49 @@ import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
 
 public class FadingActionBar {
 
-    private static class HelperBase {
-        protected Drawable mActionBarBackgroundDrawable;
-        protected FrameLayout mHeaderContainer;
-        protected int mActionBarBackgroundResId;
-        protected int mHeaderLayoutResId;
-        protected View mHeaderView;
-        protected int mContentLayoutResId;
-        protected View mContentView;
-        protected ActionBar mActionBar;
-        protected LayoutInflater mInflater;
+    public static class Initializer {
+        private Drawable mActionBarBackgroundDrawable;
+        private FrameLayout mHeaderContainer;
+        private int mActionBarBackgroundResId;
+        private int mHeaderLayoutResId;
+        private View mHeaderView;
+        private int mContentLayoutResId;
+        private View mContentView;
+        private ActionBar mActionBar;
+        private LayoutInflater mInflater;
 
-        protected void apply(SherlockActivity activity) {
+        public Initializer actionBarBackground(int drawableResId) {
+            mActionBarBackgroundResId = drawableResId;
+            return this;
+        }
+
+        public Initializer actionBarBackground(Drawable drawable) {
+            mActionBarBackgroundDrawable = drawable;
+            return this;
+        }
+
+        public Initializer headerLayout(int layoutResId) {
+            mHeaderLayoutResId = layoutResId;
+            return this;
+        }
+
+        public Initializer headerView(View view) {
+            mHeaderView = view;
+            return this;
+        }
+
+        public Initializer contentLayout(int layoutResId) {
+            mContentLayoutResId = layoutResId;
+            return this;
+        }
+
+        public Initializer contentView(View view) {
+            mContentView = view;
+            return this;
+        }
+
+        public void apply(SherlockActivity activity) {
+            // Prepare everything
             mInflater = LayoutInflater.from(activity);
             mActionBar = activity.getSupportActionBar();
             if (mActionBarBackgroundDrawable == null) {
@@ -48,13 +79,13 @@ public class FadingActionBar {
                 mHeaderView = inflater.inflate(mHeaderLayoutResId, mHeaderContainer, false);
             }
 
-        }
-
-        protected void onNewScroll(int scrollPosition) {
-            int headerHeight = mHeaderContainer.getMeasuredHeight() - mActionBar.getHeight();
-            float ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
-            int newAlpha = (int) (ratio * 255);
-            mActionBarBackgroundDrawable.setAlpha(newAlpha);
+            // See if we are in a ListView or ScrollView scenario
+            ListView listView = (ListView) activity.findViewById(android.R.id.list);
+            if (listView != null) {
+                applyListView(activity, listView);
+            } else {
+                applyScrollView(activity);
+            }
         }
 
         private Drawable.Callback mDrawableCallback = new Drawable.Callback() {
@@ -71,41 +102,8 @@ public class FadingActionBar {
             public void unscheduleDrawable(Drawable who, Runnable what) {
             }
         };
-    }
 
-    public static class ScrollViewHelper extends HelperBase {
-        public ScrollViewHelper actionBarBackground(int drawableResId) {
-            mActionBarBackgroundResId = drawableResId;
-            return this;
-        }
-
-        public ScrollViewHelper actionBarBackground(Drawable drawable) {
-            mActionBarBackgroundDrawable = drawable;
-            return this;
-        }
-
-        public ScrollViewHelper headerLayout(int layoutResId) {
-            mHeaderLayoutResId = layoutResId;
-            return this;
-        }
-
-        public ScrollViewHelper headerView(View view) {
-            mHeaderView = view;
-            return this;
-        }
-
-        public ScrollViewHelper contentLayout(int layoutResId) {
-            mContentLayoutResId = layoutResId;
-            return this;
-        }
-
-        public ScrollViewHelper contentView(View view) {
-            mContentView = view;
-            return this;
-        }
-
-        public void apply(SherlockActivity activity) {
-            super.apply(activity);
+        private void applyScrollView(SherlockActivity activity) {
             activity.setContentView(R.layout.scrollview_container);
 
             NotifyingScrollView scrollView = (NotifyingScrollView) activity.findViewById(R.id.scroll_view);
@@ -122,44 +120,10 @@ public class FadingActionBar {
                 onNewScroll(t);
             }
         };
-    }
 
-    public static class ListViewHelper extends HelperBase {
-        public ListViewHelper actionBarBackground(int drawableResId) {
-            mActionBarBackgroundResId = drawableResId;
-            return this;
-        }
-
-        public ListViewHelper actionBarBackground(Drawable drawable) {
-            mActionBarBackgroundDrawable = drawable;
-            return this;
-        }
-
-        public ListViewHelper headerLayout(int layoutResId) {
-            mHeaderLayoutResId = layoutResId;
-            return this;
-        }
-
-        public ListViewHelper headerView(View view) {
-            mHeaderView = view;
-            return this;
-        }
-
-        public ListViewHelper contentLayout(int layoutResId) {
-            mContentLayoutResId = layoutResId;
-            return this;
-        }
-
-        public ListViewHelper contentView(View view) {
-            mContentView = view;
-            return this;
-        }
-
-        public void apply(SherlockActivity activity) {
-            super.apply(activity);
+        private void applyListView(SherlockActivity activity, ListView listView) {
             activity.setContentView(mContentView);
 
-            ListView listView = (ListView) activity.findViewById(android.R.id.list);
             mHeaderContainer = (FrameLayout) mInflater.inflate(R.layout.header_container, null);
             mHeaderContainer.addView(mHeaderView, 0);
             listView.addHeaderView(mHeaderContainer, null, false);
@@ -184,5 +148,12 @@ public class FadingActionBar {
             public void onScrollStateChanged(AbsListView view, int scrollState) {
             }
         };
+
+        private void onNewScroll(int scrollPosition) {
+            int headerHeight = mHeaderContainer.getMeasuredHeight() - mActionBar.getHeight();
+            float ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
+            int newAlpha = (int) (ratio * 255);
+            mActionBarBackgroundDrawable.setAlpha(newAlpha);
+        }
     }
 }
