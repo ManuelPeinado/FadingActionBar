@@ -171,7 +171,7 @@ public class FadingActionBarHelper {
             if (topChild == null) {
                 onNewScroll(0);
             } else if (topChild != mHeaderContainer) {
-                onNewScroll(mHeaderContainer.getMeasuredHeight());
+                onNewScroll(mHeaderContainer.getHeight());
             } else {
                 onNewScroll(-topChild.getTop());
             }
