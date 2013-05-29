@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.actionbarsherlock.app.SherlockListActivity;
 import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
 
 public class FadingActionBarHelper {
+    private static final String TAG = "FadingActionBarHelper";
     private Drawable mActionBarBackgroundDrawable;
     private FrameLayout mHeaderContainer;
     private int mActionBarBackgroundResId;
@@ -191,23 +193,34 @@ public class FadingActionBarHelper {
         public void onScrollStateChanged(AbsListView view, int scrollState) {
         }
     };
+    private int mHeaderPadding;
 
     private void onNewScroll(int scrollPosition) {
         if (mActionBar == null) {
             return;
         }
-        int headerHeight = mHeaderContainer.getMeasuredHeight() - mActionBar.getHeight();
+        int headerHeight = mHeaderContainer.getHeight() - mActionBar.getHeight();
         float ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
         int newAlpha = (int) (ratio * 255);
         mActionBarBackgroundDrawable.setAlpha(newAlpha);
 
+        // Add parallax effect if content is ScrollView
+        Log.v(TAG, "Header height:" + headerHeight);
         if (mUseParallax && mScrollView != null) {
-            int dampedScroll = (int) (scrollPosition * 0.5);
-            mHeaderContainer.setPadding(0, dampedScroll, 0, 0);
-            LinearLayout.LayoutParams params = (LayoutParams) mContentView.getLayoutParams();
-            params.topMargin = -dampedScroll;
-            mContentView.setLayoutParams(params);
-        }
+            if (scrollPosition <= 384) {
+                int dampedScroll = (int) (scrollPosition * 0.5);
+                Log.v(TAG, "" + scrollPosition + " " + dampedScroll);
+                mHeaderContainer.setPadding(0, dampedScroll, 0, 0);
+                LinearLayout.LayoutParams params = (LayoutParams) mContentView.getLayoutParams();
+                params.topMargin = -dampedScroll;
+                mContentView.setLayoutParams(params);
+            } else {
+                mHeaderContainer.setPadding(0, 0, 0, 0);
+                LinearLayout.LayoutParams params = (LayoutParams) mContentView.getLayoutParams();
+                params.topMargin = 0;
+                mContentView.setLayoutParams(params);
+            }
+        } 
     }
 
     private void initializeGradient(ViewGroup headerContainer) {
