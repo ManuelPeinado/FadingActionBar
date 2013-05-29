@@ -32,7 +32,7 @@ public class FadingActionBarHelper {
     private ActionBar mActionBar;
     private LayoutInflater mInflater;
     private boolean mLightActionBar;
-    private boolean mUseParallax;
+    private boolean mUseParallax = true;
 
     public FadingActionBarHelper actionBarBackground(int drawableResId) {
         mActionBarBackgroundResId = drawableResId;
