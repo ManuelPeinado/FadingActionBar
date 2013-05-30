@@ -15,17 +15,16 @@
  */
 package com.manuelpeinado.fadingactionbar.demo;
 
-import java.util.Arrays;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.actionbarsherlock.app.SherlockListActivity;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class HomeActivity extends SherlockListActivity {
     private List<ActivityInfo> activitiesInfo = Arrays.asList(
@@ -33,8 +32,9 @@ public class HomeActivity extends SherlockListActivity {
             new ActivityInfo(ListViewActivity.class, R.string.activity_title_listview),
             new ActivityInfo(LightBackgroundActivity.class, R.string.activity_title_light_bg),
             new ActivityInfo(LightActionBarActivity.class, R.string.activity_title_light_ab),
-            new ActivityInfo(SampleFragmentActivity.class, R.string.activity_title_fragment));
-    
+            new ActivityInfo(SampleFragmentActivity.class, R.string.activity_title_fragment),
+            new ActivityInfo(NavigationDrawerActivity.class, R.string.activity_title_navigation));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
