@@ -1,9 +1,11 @@
 package com.manuelpeinado.fadingactionbar.demo;
 
 import android.os.Bundle;
+import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
+import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
 import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 
 public class LightActionBarActivity extends SherlockActivity {
@@ -11,14 +13,15 @@ public class LightActionBarActivity extends SherlockActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        setContentView(R.layout.activity_scrollview);
 
-        FadingActionBarHelper helper = new FadingActionBarHelper()
+        new FadingActionBarHelper()
+        	.activity(this)
             .actionBarBackground(R.drawable.ab_background_light)
-            .headerLayout(R.layout.header_light)
-            .contentLayout(R.layout.activity_scrollview)
-            .lightActionBar(true);
-        setContentView(helper.createView(this));
-        helper.initActionBar(this);
+            .headerView(getLayoutInflater().inflate(R.layout.header_light, null))
+            .lightActionBar(true)
+            .apply((NotifyingScrollView)findViewById(R.id.scroller), (ViewGroup)findViewById(R.id.container));
     }
 
     @Override

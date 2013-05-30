@@ -1,12 +1,13 @@
 package com.manuelpeinado.fadingactionbar;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Build;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.FrameLayout;
@@ -20,17 +21,19 @@ import com.actionbarsherlock.app.SherlockListActivity;
 import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
 
 public class FadingActionBarHelper {
+	private Activity mActivity;
     private Drawable mActionBarBackgroundDrawable;
     private FrameLayout mHeaderContainer;
     private int mActionBarBackgroundResId;
-    private int mHeaderLayoutResId;
     private View mHeaderView;
-    private int mContentLayoutResId;
-    private View mContentView;
     private ActionBar mActionBar;
-    private LayoutInflater mInflater;
     private boolean mLightActionBar;
 
+    public FadingActionBarHelper activity(Activity activity) {
+    	mActivity = activity;
+    	return this;
+    }
+    
     public FadingActionBarHelper actionBarBackground(int drawableResId) {
         mActionBarBackgroundResId = drawableResId;
         return this;
@@ -41,23 +44,8 @@ public class FadingActionBarHelper {
         return this;
     }
 
-    public FadingActionBarHelper headerLayout(int layoutResId) {
-        mHeaderLayoutResId = layoutResId;
-        return this;
-    }
-
     public FadingActionBarHelper headerView(View view) {
         mHeaderView = view;
-        return this;
-    }
-
-    public FadingActionBarHelper contentLayout(int layoutResId) {
-        mContentLayoutResId = layoutResId;
-        return this;
-    }
-
-    public FadingActionBarHelper contentView(View view) {
-        mContentView = view;
         return this;
     }
 
@@ -66,30 +54,43 @@ public class FadingActionBarHelper {
         return this;
     }
 
-    public View createView(Context context) {
-        return createView(LayoutInflater.from(context));
+    public FadingActionBarHelper apply(ListView listView) {
+        mHeaderContainer = new FrameLayout(mActivity);
+        mHeaderContainer.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.WRAP_CONTENT));
+        
+        View gradientOverlay = new View(mActivity);
+        gradientOverlay.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, (int)(100 * mActivity.getResources().getDisplayMetrics().density)));
+        mHeaderContainer.addView(mHeaderView, 0);
+        
+        GradientDrawable gradient = new GradientDrawable(Orientation.TOP_BOTTOM, new int[] {0x77000000, 0x00000000});
+        gradientOverlay.setBackgroundDrawable(gradient);
+        mHeaderContainer.addView(gradientOverlay);
+        
+        listView.addHeaderView(mHeaderContainer, null, false);
+
+        listView.setOnScrollListener(mOnScrollListener);
+        initActionBar(mActivity);
+        
+    	return this;
     }
-
-    public View createView(LayoutInflater inflater) {
-        //
-        // Prepare everything
-
-        mInflater = inflater;
-        if (mContentView == null) {
-            mContentView = inflater.inflate(mContentLayoutResId, null);
-        }
-        if (mHeaderView == null) {
-            mHeaderView = inflater.inflate(mHeaderLayoutResId, mHeaderContainer, false);
-        }
-
-        //
-        // See if we are in a ListView or ScrollView scenario
-
-        ListView listView = (ListView) mContentView.findViewById(android.R.id.list);
-        if (listView != null) {
-            return createListView(listView);
-        }
-        return createScrollView();
+    
+    public FadingActionBarHelper apply(NotifyingScrollView scrollView, ViewGroup container) {
+        mHeaderContainer = new FrameLayout(mActivity);
+        mHeaderContainer.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        
+        View gradientOverlay = new View(mActivity);
+        gradientOverlay.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, (int)(100 * mActivity.getResources().getDisplayMetrics().density)));
+        mHeaderContainer.addView(mHeaderView, 0);
+        
+        GradientDrawable gradient = buildGradient();
+        gradientOverlay.setBackgroundDrawable(gradient);
+        mHeaderContainer.addView(gradientOverlay);
+        
+        container.addView(mHeaderContainer, 0);
+        scrollView.setOnScrollChangedListener(mOnScrollChangedListener);
+        initActionBar(mActivity);
+        
+    	return this;
     }
 
     public void initActionBar(Activity activity) {
@@ -102,6 +103,18 @@ public class FadingActionBarHelper {
             mActionBarBackgroundDrawable.setCallback(mDrawableCallback);
         }
         mActionBarBackgroundDrawable.setAlpha(0);
+    }
+    
+    private GradientDrawable buildGradient() {
+    	int[] colors;
+    	
+    	if (mLightActionBar) {
+    		colors = new int[] {0x99FFFFFF, 0x22FFFFFF, 0x00FFFFFF};
+    	} else {
+    		colors = new int[] {0x77000000, 0x00000000};
+    	}
+    	
+    	return new GradientDrawable(Orientation.TOP_BOTTOM, colors);
     }
 
     private ActionBar getActionBar(Activity activity) {
@@ -132,37 +145,11 @@ public class FadingActionBarHelper {
         }
     };
 
-    private View createScrollView() {
-        ViewGroup scrollViewContainer = (ViewGroup) mInflater.inflate(R.layout.fab__scrollview_container, null);
-
-        NotifyingScrollView scrollView = (NotifyingScrollView) scrollViewContainer.findViewById(R.id.fab__scroll_view);
-        scrollView.setOnScrollChangedListener(mOnScrollChangedListener);
-
-        ViewGroup container = (ViewGroup) scrollViewContainer.findViewById(R.id.fab__container);
-        container.addView(mContentView);
-        mHeaderContainer = (FrameLayout) scrollViewContainer.findViewById(R.id.fab__header_container);
-        initializeGradient(mHeaderContainer);
-        mHeaderContainer.addView(mHeaderView, 0);
-        
-        return scrollViewContainer;
-    }
-
     private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
         public void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
             onNewScroll(t);
         }
     };
-
-    private View createListView(ListView listView) {
-        mHeaderContainer = (FrameLayout) mInflater.inflate(R.layout.fab__header_container, null);
-        initializeGradient(mHeaderContainer);
-        mHeaderContainer.addView(mHeaderView, 0);
-        listView.addHeaderView(mHeaderContainer, null, false);
-
-        listView.setOnScrollListener(mOnScrollListener);
-        
-        return mContentView;
-    }
 
     private OnScrollListener mOnScrollListener = new OnScrollListener() {
         @Override
@@ -190,14 +177,5 @@ public class FadingActionBarHelper {
         float ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
         int newAlpha = (int) (ratio * 255);
         mActionBarBackgroundDrawable.setAlpha(newAlpha);
-    }
-
-    private void initializeGradient(ViewGroup headerContainer) {
-        View gradientView = headerContainer.findViewById(R.id.fab__gradient);
-        int gradient = R.drawable.fab__gradient;
-        if (mLightActionBar) {
-            gradient = R.drawable.fab__gradient_light;
-        }
-        gradientView.setBackgroundResource(gradient);
     }
 }

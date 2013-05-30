@@ -20,12 +20,13 @@ public class ListViewActivity extends SherlockActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FadingActionBarHelper helper = new FadingActionBarHelper()
+        setContentView(R.layout.activity_listview);
+        
+        new FadingActionBarHelper()
             .actionBarBackground(R.drawable.ab_background)
-            .headerLayout(R.layout.header)
-            .contentLayout(R.layout.activity_listview);
-        setContentView(helper.createView(this));
-        helper.initActionBar(this);
+            .headerView(getLayoutInflater().inflate(R.layout.header, null))
+            .activity(this)
+            .apply((ListView)findViewById(android.R.id.list));
 
         ListView listView = (ListView) findViewById(android.R.id.list);
         ArrayList<String> items = loadItems(R.raw.nyc_sites);

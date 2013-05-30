@@ -1,30 +1,31 @@
 package com.manuelpeinado.fadingactionbar.demo;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
 import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 
 public class SampleFragment extends SherlockFragment {
-    private FadingActionBarHelper mFadingHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return mFadingHelper.createView(inflater);
+    	return inflater.inflate(R.layout.activity_scrollview, null);
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mFadingHelper = new FadingActionBarHelper()
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onAttach(getActivity());
+        View header = LayoutInflater.from(getActivity()).inflate(R.layout.header_light, null);
+        
+        new FadingActionBarHelper()
+        	.activity(getActivity())
             .actionBarBackground(R.drawable.ab_background_light)
-            .headerLayout(R.layout.header_light)
-            .contentLayout(R.layout.activity_scrollview)
-            .lightActionBar(true);
-        mFadingHelper.initActionBar(activity);
+            .headerView(header)
+            .lightActionBar(true)
+            .apply((NotifyingScrollView)getView().findViewById(R.id.scroller), (ViewGroup)getView().findViewById(R.id.container));
     }
 }
