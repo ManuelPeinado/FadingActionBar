@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.cyrilmottier.android.translucentactionbar.NotifyingScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fab__scroll_view"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:id="@+id/fab__container"
+    <include layout="@layout/fab__header_container" />
+
+    <com.cyrilmottier.android.translucentactionbar.NotifyingScrollView
+        android:id="@+id/fab__scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent" >
 
-        <include layout="@layout/fab__header_container" />
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/fab__container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-</com.cyrilmottier.android.translucentactionbar.NotifyingScrollView>
+            <View
+                android:id="@+id/fab__content_top_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+    </com.cyrilmottier.android.translucentactionbar.NotifyingScrollView>
+
+</FrameLayout>
