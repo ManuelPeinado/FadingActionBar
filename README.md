@@ -29,7 +29,7 @@ Or if you use maven, add the following dependency to your pom:
 <dependency>
     <groupId>com.github.manuelpeinado.fadingactionbar</groupId>
     <artifactId>fadingactionbar</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
     <type>apklib</type>
 </dependency>
 ```
@@ -51,7 +51,8 @@ You can even use the library [from a fragment][7], which is useful when implemen
 Acknowledgements
 --------------------
 
-* Thanks to Cyril Mottier for sharing the techniques that make this library possible.
+* Thanks to [Cyril Mottier][8] for sharing the techniques that make this library possible.
+* Thanks to [Antonio Leiva][9] for writing the Navigation Drawer sample.
 
 
 Who's using it
@@ -105,5 +106,7 @@ License
  [5]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/ScrollViewActivity.java
  [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/ListViewActivity.java
  [7]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
+ [8]: http://cyrilmottier.com
+ [9]: https://github.com/antoniolg
 
 
