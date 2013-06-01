@@ -1,5 +1,11 @@
 Change Log
 =======================================
+
+Version 2.1.0 *(2013-06-01)*
+----------------------------
+* Added support for parallax scroll
+* Added new demo that showcases integration with DrawerLayout
+
 Version 2.0.1 *(2013-05-29)*
 ----------------------------
  * Use getHeight() instead of getMeasuredHeight()
