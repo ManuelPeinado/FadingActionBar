@@ -1,7 +1,9 @@
 package com.manuelpeinado.fadingactionbar.demo;
 
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.antonioleiva.navigationdrawercompat.ActionBarDrawerToggleCompat;
@@ -22,9 +23,8 @@ public class NavigationDrawerActivity extends SherlockFragmentActivity implement
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    private String[] mActionBarTitles;
-
-    private FragmentManager mFragmentManager;
+    private String[] mCityNames;
+    private TypedArray mCityImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,8 @@ public class NavigationDrawerActivity extends SherlockFragmentActivity implement
         setContentView(R.layout.activity_navigation_drawer);
 
         mTitle = mDrawerTitle = getTitle();
-        mActionBarTitles = getResources().getStringArray(R.array.drawer_items);
+        mCityNames = getResources().getStringArray(R.array.drawer_items);
+        mCityImages = getResources().obtainTypedArray(R.array.city_images);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
@@ -40,7 +41,7 @@ public class NavigationDrawerActivity extends SherlockFragmentActivity implement
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mActionBarTitles));
+                R.layout.drawer_list_item, mCityNames));
         mDrawerList.setOnItemClickListener(this);
 
         // enable ActionBar app icon to behave as action to toggle nav drawer
@@ -58,12 +59,10 @@ public class NavigationDrawerActivity extends SherlockFragmentActivity implement
         ) {
             public void onDrawerClosed(View view) {
                 getSupportActionBar().setTitle(mTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
                 getSupportActionBar().setTitle(mDrawerTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
 
@@ -71,13 +70,6 @@ public class NavigationDrawerActivity extends SherlockFragmentActivity implement
 
         if (savedInstanceState == null) {
             selectItem(0);
-        }
-
-        mFragmentManager = getSupportFragmentManager();
-
-        if (savedInstanceState ==  null){
-            mFragmentManager.beginTransaction()
-                    .add(R.id.content_frame, new SampleFragment()).commit();
         }
     }
 
@@ -91,7 +83,7 @@ public class NavigationDrawerActivity extends SherlockFragmentActivity implement
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
+        // Pass any configuration change to the drawer toggles
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
@@ -109,19 +101,24 @@ public class NavigationDrawerActivity extends SherlockFragmentActivity implement
 
     private void selectItem(int position) {
         // update the main content by replacing fragments
-        /*Fragment fragment = new PlanetFragment();
+        Fragment fragment = new SampleFragment();
         Bundle args = new Bundle();
-        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
+        args.putInt(SampleFragment.ARG_IMAGE_RES, mCityImages.getResourceId(position, 0));
+        args.putInt(SampleFragment.ARG_ACTION_BG_RES, R.drawable.ab_background);
         fragment.setArguments(args);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();*/
-
-        Toast.makeText(this, "Position " + position, Toast.LENGTH_SHORT).show();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
-        getSupportActionBar().setTitle(mActionBarTitles[position]);
+        setTitle(mCityNames[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        getSupportActionBar().setTitle(mTitle);
     }
 }

@@ -12,5 +12,6 @@
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">close_drawer</string>
     <string name="activity_title_navigation">Navigation Drawer Example</string>
+    <string name="choose_city">Choose a city</string>
 
 </resources>
