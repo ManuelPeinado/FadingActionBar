@@ -19,9 +19,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -38,7 +38,7 @@ import com.actionbarsherlock.app.SherlockListActivity;
 import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
 
 public class FadingActionBarHelper {
-    private static final String TAG = "FadingActionBarHelper";
+    protected static final String TAG = "FadingActionBarHelper";
     private Drawable mActionBarBackgroundDrawable;
     private FrameLayout mHeaderContainer;
     private int mActionBarBackgroundResId;
@@ -54,6 +54,7 @@ public class FadingActionBarHelper {
     private int mLastHeaderHeight = -1;
     private ViewGroup mContentContainer;
     private ViewGroup mScrollView;
+    private boolean mFirstGlobalLayoutPerformed;
 
     public FadingActionBarHelper actionBarBackground(int drawableResId) {
         mActionBarBackgroundResId = drawableResId;
@@ -121,11 +122,21 @@ public class FadingActionBarHelper {
         } else {
             root = createScrollView();
         }
+
+        // Use measured height here as an estimate of the header height, later on after the layout is complete 
+        // we'll use the actual height
+        int widthMeasureSpec = MeasureSpec.makeMeasureSpec(LayoutParams.MATCH_PARENT, MeasureSpec.EXACTLY);
+        int heightMeasureSpec = MeasureSpec.makeMeasureSpec(LayoutParams.WRAP_CONTENT, MeasureSpec.EXACTLY);
+        mHeaderView.measure(widthMeasureSpec, heightMeasureSpec);
+        updateHeaderHeight(mHeaderView.getMeasuredHeight());
+
         root.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                if (mLastHeaderHeight == -1 && mHeaderContainer.getHeight() != 0) {
-                    updateHeaderHeight();
+                int headerHeight = mHeaderContainer.getHeight();
+                if (!mFirstGlobalLayoutPerformed && headerHeight != 0) {
+                    updateHeaderHeight(headerHeight);
+                    mFirstGlobalLayoutPerformed = true;
                 }
             }
         });
@@ -241,7 +252,7 @@ public class FadingActionBarHelper {
 
         int currentHeaderHeight = mHeaderContainer.getHeight();
         if (currentHeaderHeight != mLastHeaderHeight) {
-            updateHeaderHeight();
+            updateHeaderHeight(currentHeaderHeight);
         }
 
         int headerHeight = currentHeaderHeight - mActionBar.getHeight();
@@ -267,19 +278,16 @@ public class FadingActionBarHelper {
         mLastDampedScroll = dampedScroll;
     }
 
-    private void updateHeaderHeight() {
-        int currentHeaderHeight = mHeaderContainer.getHeight();
+    private void updateHeaderHeight(int headerHeight) {
         ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) mMarginView.getLayoutParams();
-        params.height = currentHeaderHeight;
+        params.height = headerHeight;
         mMarginView.setLayoutParams(params);
         if (mListViewBackgroundView != null) {
             FrameLayout.LayoutParams params2 = (FrameLayout.LayoutParams) mListViewBackgroundView.getLayoutParams();
-            params2.topMargin = currentHeaderHeight;
-            Log.v(TAG, "topMargin=" + currentHeaderHeight);
+            params2.topMargin = headerHeight;
             mListViewBackgroundView.setLayoutParams(params2);
-            mContentContainer.requestLayout();
         }
-        mLastHeaderHeight = currentHeaderHeight;
+        mLastHeaderHeight = headerHeight;
     }
 
     private void initializeGradient(ViewGroup headerContainer) {
