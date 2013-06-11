@@ -28,6 +28,7 @@ public class FadingActionBarHelper {
     private View mHeaderView;
     private ActionBar mActionBar;
     private boolean mLightActionBar;
+    private int mScrollPosition;
 
     public FadingActionBarHelper activity(Activity activity) {
     	mActivity = activity;
@@ -69,7 +70,7 @@ public class FadingActionBarHelper {
         listView.addHeaderView(mHeaderContainer, null, false);
 
         listView.setOnScrollListener(mOnScrollListener);
-        initActionBar(mActivity);
+        updateActionBar(mActivity);
         
     	return this;
     }
@@ -88,12 +89,12 @@ public class FadingActionBarHelper {
         
         container.addView(mHeaderContainer, 0);
         scrollView.setOnScrollChangedListener(mOnScrollChangedListener);
-        initActionBar(mActivity);
+        updateActionBar(mActivity);
         
     	return this;
     }
 
-    public void initActionBar(Activity activity) {
+    public void updateActionBar(Activity activity) {
         mActionBar = getActionBar(activity);
         if (mActionBarBackgroundDrawable == null) {
             mActionBarBackgroundDrawable = activity.getResources().getDrawable(mActionBarBackgroundResId);
@@ -102,7 +103,7 @@ public class FadingActionBarHelper {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
             mActionBarBackgroundDrawable.setCallback(mDrawableCallback);
         }
-        mActionBarBackgroundDrawable.setAlpha(0);
+        onNewScroll(mScrollPosition);
     }
     
     private GradientDrawable buildGradient() {
@@ -147,7 +148,7 @@ public class FadingActionBarHelper {
 
     private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
         public void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
-            onNewScroll(t);
+        	onNewScroll(t);
         }
     };
 
@@ -170,6 +171,7 @@ public class FadingActionBarHelper {
     };
 
     private void onNewScroll(int scrollPosition) {
+    	mScrollPosition = scrollPosition;
         if (mActionBar == null) {
             return;
         }
