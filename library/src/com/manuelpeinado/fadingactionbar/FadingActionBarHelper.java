@@ -15,6 +15,9 @@
  */
 package com.manuelpeinado.fadingactionbar;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -155,7 +158,7 @@ public class FadingActionBarHelper {
         mActionBarBackgroundDrawable.setAlpha(0);
     }
 
-    private ActionBar getActionBar(Activity activity) {
+    protected ActionBar getActionBar(Activity activity) {
         if (activity instanceof SherlockActivity) {
             return ((SherlockActivity) activity).getSupportActionBar();
         }
@@ -165,7 +168,20 @@ public class FadingActionBarHelper {
         if (activity instanceof SherlockListActivity) {
             return ((SherlockListActivity) activity).getSupportActionBar();
         }
-        throw new RuntimeException("Activity should derive from one of the ActionBarSherlock");
+        try {
+            Method method = activity.getClass().getMethod("getSupportActionBar");
+            return (ActionBar) method.invoke(activity);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        throw new RuntimeException("Activity should derive from one of the ActionBarSherlock activities "
+                + "or implement a method called getSupportActionBar");
     }
 
     private Drawable.Callback mDrawableCallback = new Drawable.Callback() {
