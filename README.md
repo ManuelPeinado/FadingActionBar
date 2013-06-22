@@ -29,7 +29,7 @@ Or if you use maven, add the following dependency to your pom:
 <dependency>
     <groupId>com.github.manuelpeinado.fadingactionbar</groupId>
     <artifactId>fadingactionbar</artifactId>
-    <version>2.1.0</version>
+    <version>2.2.1</version>
     <type>apklib</type>
 </dependency>
 ```
