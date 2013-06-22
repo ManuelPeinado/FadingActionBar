@@ -1,6 +1,11 @@
 Change Log
 =======================================
 
+Version 2.2.0 *(2013-06-22)*
+----------------------------
+* Fixes severe issue (https://github.com/ManuelPeinado/FadingActionBar/issues/6)
+* Adds support for HoloEverywhere (https://github.com/ManuelPeinado/FadingActionBar/issues/4).
+
 Version 2.1.0 *(2013-06-01)*
 ----------------------------
 * Added support for parallax scroll

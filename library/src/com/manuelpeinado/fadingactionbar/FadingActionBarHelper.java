@@ -58,6 +58,9 @@ public class FadingActionBarHelper {
     private ViewGroup mContentContainer;
     private ViewGroup mScrollView;
     private boolean mFirstGlobalLayoutPerformed;
+    private View mMarginView;
+    private View mListViewBackgroundView;
+
 
     public FadingActionBarHelper actionBarBackground(int drawableResId) {
         mActionBarBackgroundResId = drawableResId;
@@ -198,7 +201,6 @@ public class FadingActionBarHelper {
         public void unscheduleDrawable(Drawable who, Runnable what) {
         }
     };
-    private View mMarginView;
 
     private View createScrollView() {
         mScrollView = (ViewGroup) mInflater.inflate(R.layout.fab__scrollview_container, null);
@@ -221,7 +223,6 @@ public class FadingActionBarHelper {
             onNewScroll(t);
         }
     };
-    private View mListViewBackgroundView;
 
     private View createListView(ListView listView) {
         mContentContainer = (ViewGroup) mInflater.inflate(R.layout.fab__listview_container, null);
@@ -235,10 +236,13 @@ public class FadingActionBarHelper {
         mMarginView.setLayoutParams(new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT, 0));
         listView.addHeaderView(mMarginView, null, false);
 
+        // Make the background as high as the screen so that it fills regardless of the amount of scroll. 
         mListViewBackgroundView = mContentContainer.findViewById(R.id.fab__listview_background);
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mListViewBackgroundView.getLayoutParams();
+        params.height = Utils.getDisplayHeight(listView.getContext());
+        mListViewBackgroundView.setLayoutParams(params);
 
         listView.setOnScrollListener(mOnScrollListener);
-
         return mContentContainer;
     }
 
