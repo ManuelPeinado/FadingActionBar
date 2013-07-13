@@ -38,8 +38,8 @@ public class HeaderOverlayActivity extends SherlockActivity {
         FadingActionBarHelper helper = new FadingActionBarHelper()
             .actionBarBackground(R.drawable.ab_background)
             .headerLayout(R.layout.header)
-            .contentLayout(R.layout.activity_listview)
-            .headerOverlayLayout(R.layout.header_overlay);
+            .headerOverlayLayout(R.layout.header_overlay)
+            .contentLayout(R.layout.activity_listview);
         setContentView(helper.createView(this));
         helper.initActionBar(this);
 

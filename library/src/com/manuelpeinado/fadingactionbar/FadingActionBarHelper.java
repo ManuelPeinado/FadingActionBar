@@ -148,6 +148,9 @@ public class FadingActionBarHelper {
             root = createScrollView();
         }
 
+        //
+        // Add header overlay (a special header that scrolls without parallax) 
+
         if (mHeaderOverlayView == null && mHeaderOverlayLayoutResId != 0) {
             mHeaderOverlayView = inflater.inflate(mHeaderOverlayLayoutResId, mMarginView, false);
         }
