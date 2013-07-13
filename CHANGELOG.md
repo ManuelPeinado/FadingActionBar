@@ -1,6 +1,10 @@
 Change Log
 =======================================
 
+Version 2.2.2 *(2013-07-13)*
+----------------------------
+* Fixes yet another severe issue in handling of ListViews (https://github.com/ManuelPeinado/FadingActionBar/issues/6)
+
 Version 2.2.1 *(2013-06-22)*
 ----------------------------
 * Fixes severe issue (https://github.com/ManuelPeinado/FadingActionBar/issues/6)
