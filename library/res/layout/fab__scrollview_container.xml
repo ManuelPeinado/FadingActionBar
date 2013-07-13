@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <View
+            <FrameLayout
                 android:id="@+id/fab__content_top_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
