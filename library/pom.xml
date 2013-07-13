@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>fadingactionbar</artifactId>
-  <version>2.2.2</version>
+  <version>2.2.0</version>
     <name>FadingActionBar</name>
     <packaging>apklib</packaging>
 
     <parent>
         <groupId>com.github.manuelpeinado.fadingactionbar</groupId>
         <artifactId>parent</artifactId>
-        <version>2.2.2</version>
+        <version>2.2.3-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
