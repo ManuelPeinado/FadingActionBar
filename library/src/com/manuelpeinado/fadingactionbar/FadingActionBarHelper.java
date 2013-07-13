@@ -294,8 +294,10 @@ public class FadingActionBarHelper {
             mListViewBackgroundView.offsetTopAndBottom(offset);
         }
 
-        mLastScrollPosition = scrollPosition;
-        mLastDampedScroll = dampedScroll;
+        if (mFirstGlobalLayoutPerformed) {
+            mLastScrollPosition = scrollPosition;
+            mLastDampedScroll = dampedScroll;
+        }
     }
 
     private void updateHeaderHeight(int headerHeight) {
