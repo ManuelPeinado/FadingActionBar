@@ -84,11 +84,18 @@ public class FadingActionBarHelper {
         return this;
     }
 
+    /** 
+     * A header overlay is placed on top of the header, and does not scroll with parallax effect. If you disable 
+     * parallax, then you shouldn't bother to use the header overlay, just put everything in the header.
+     */
     public FadingActionBarHelper headerOverlayLayout(int layoutResId) {
         mHeaderOverlayLayoutResId = layoutResId;
         return this;
     }
 
+    /**
+     * See {@link #headerOverlayLayout(int)}.
+     */
     public FadingActionBarHelper headerOverlayView(View view) {
         mHeaderOverlayView = view;
         return this;
