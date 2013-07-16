@@ -26,3 +26,11 @@ pom.xml.*
 
 # Folder containing all the Google Play APKs
 apks
+
+#IntelliJ IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+classes
+gen-external-apklibs
