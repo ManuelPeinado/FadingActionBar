@@ -60,7 +60,10 @@ public class FadingActionBarHelper {
     private boolean mFirstGlobalLayoutPerformed;
     private View mMarginView;
     private View mListViewBackgroundView;
-
+    /*Container of mListViewBackgroundView*/
+    private FrameLayout mListViewViewContainerBackground;
+    /*Color of the listView*/
+    private int mColorBackgorund=0;
 
     public FadingActionBarHelper actionBarBackground(int drawableResId) {
         mActionBarBackgroundResId = drawableResId;
@@ -99,6 +102,15 @@ public class FadingActionBarHelper {
 
     public FadingActionBarHelper parallax(boolean value) {
         mUseParallax = value;
+        return this;
+    }
+
+    /**
+     * Sets the color of the listview, and for doing it set the background for both the view and the container of it.
+     * @param color to set as background
+     */
+    public FadingActionBarHelper setListBackgorund(int color) {
+        mColorBackgorund = color;
         return this;
     }
 
@@ -238,6 +250,14 @@ public class FadingActionBarHelper {
 
         // Make the background as high as the screen so that it fills regardless of the amount of scroll. 
         mListViewBackgroundView = mContentContainer.findViewById(R.id.fab__listview_background);
+        if(mColorBackgorund!=0){
+            //We need the reference to the container that set the whole screen background when we scroll the mListViewBackgroundView
+            mListViewViewContainerBackground = (FrameLayout) mContentContainer.findViewById(R.id.fab__listview_container);
+            //Set the color to both views so when we scroll we keep same color as background
+            mListViewBackgroundView.setBackgroundColor(mColorBackgorund);
+            mListViewViewContainerBackground.setBackgroundColor(mColorBackgorund);
+        }
+
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mListViewBackgroundView.getLayoutParams();
         params.height = Utils.getDisplayHeight(listView.getContext());
         mListViewBackgroundView.setLayoutParams(params);
@@ -245,6 +265,7 @@ public class FadingActionBarHelper {
         listView.setOnScrollListener(mOnScrollListener);
         return mContentContainer;
     }
+
 
     private OnScrollListener mOnScrollListener = new OnScrollListener() {
         @Override

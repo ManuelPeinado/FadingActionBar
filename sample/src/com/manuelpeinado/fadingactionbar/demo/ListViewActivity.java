@@ -38,7 +38,9 @@ public class ListViewActivity extends SherlockActivity {
         FadingActionBarHelper helper = new FadingActionBarHelper()
             .actionBarBackground(R.drawable.ab_background)
             .headerLayout(R.layout.header)
-            .contentLayout(R.layout.activity_listview);
+            .contentLayout(R.layout.activity_listview)
+            //Set color optional
+            .setListBackgorund(getResources().getColor(R.color.holo_orange));
         setContentView(helper.createView(this));
         helper.initActionBar(this);
 
@@ -72,4 +74,6 @@ public class ListViewActivity extends SherlockActivity {
         getSupportMenuInflater().inflate(R.menu.activity_menu, menu);
         return true;
     }
+
+
 }
