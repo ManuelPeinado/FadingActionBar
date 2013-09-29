@@ -14,6 +14,8 @@
     <string name="drawer_close">close_drawer</string>
     <string name="activity_title_navigation">Navigation Drawer Example</string>
     <string name="activity_title_header_overlay">Header Overlay Example</string>
+    <string name="activity_title_dataset_change">Dataset Change Example</string>
     <string name="choose_city">Choose a city</string>
+    <string name="action_change_dataset">Change dataset</string>
 
 </resources>

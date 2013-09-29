@@ -1,5 +1,8 @@
 Change Log
 =======================================
+Version 2.3.2 *(2013-?-?)*
+----------------------------
+* Adds support for header overlays (drawn on top of the header but scrolls without parallax effect.)
 
 Version 2.2.2 *(2013-07-13)*
 ----------------------------
