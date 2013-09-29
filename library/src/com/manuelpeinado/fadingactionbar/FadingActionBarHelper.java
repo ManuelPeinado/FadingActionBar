@@ -302,6 +302,7 @@ public class FadingActionBarHelper {
             int listViewBkgTop = mListViewBackgroundView.getTop();
             mListViewBackgroundView.offsetTopAndBottom(offset == 0 && mListViewBackgroundTop != 0  && listViewBkgTop == 0 ? mListViewBackgroundTop : offset);
             mListViewBackgroundTop = mListViewBackgroundView.getTop();
+            mListViewBackgroundView.offsetTopAndBottom(offset);
         }
 
         if (mFirstGlobalLayoutPerformed) {
