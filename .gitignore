@@ -19,10 +19,15 @@ local.properties
 .classpath
 .project
 
-#Maven
+# Maven
 target
 release.properties
 pom.xml.*
 
 # Folder containing all the Google Play APKs
 apks
+
+# Gradle
+library/build
+sample/build
+.gradle
