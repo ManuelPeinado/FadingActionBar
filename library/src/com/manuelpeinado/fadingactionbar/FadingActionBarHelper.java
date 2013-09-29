@@ -60,8 +60,6 @@ public class FadingActionBarHelper {
     private boolean mFirstGlobalLayoutPerformed;
     private View mMarginView;
     private View mListViewBackgroundView;
-    private int mHeaderContainerTop = 0;
-    private int mListViewBackgroundTop = 0;
 
 
     public FadingActionBarHelper actionBarBackground(int drawableResId) {
@@ -289,19 +287,10 @@ public class FadingActionBarHelper {
         float damping = mUseParallax ? 0.5f : 1.0f;
         int dampedScroll = (int) (scrollPosition * damping);
         int offset = mLastDampedScroll - dampedScroll;
-        //if offset didn't change and header container view top is 0  but last top position != 0
-        // then we should reset offset to last top position otherwise just use offset
-        int headerTop = mHeaderContainer.getTop();
-        mHeaderContainer.offsetTopAndBottom(offset == 0 && mHeaderContainerTop != 0  && headerTop == 0 ? mHeaderContainerTop : offset);
-        mHeaderContainerTop = mHeaderContainer.getTop();
+        mHeaderContainer.offsetTopAndBottom(offset);
 
         if (mListViewBackgroundView != null) {
             offset = mLastScrollPosition - scrollPosition;
-            //if offset didn't change and header container view top is 0  but last top position != 0
-            // then we should reset offset to last top position otherwise just use offset
-            int listViewBkgTop = mListViewBackgroundView.getTop();
-            mListViewBackgroundView.offsetTopAndBottom(offset == 0 && mListViewBackgroundTop != 0  && listViewBkgTop == 0 ? mListViewBackgroundTop : offset);
-            mListViewBackgroundTop = mListViewBackgroundView.getTop();
             mListViewBackgroundView.offsetTopAndBottom(offset);
         }
 
