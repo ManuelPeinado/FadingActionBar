@@ -60,6 +60,8 @@ Who's using it
 
 * [#ДАНСwithme][10]. This app attempts to organise information from various social network streams into a single source.
 
+* [Pearl Jam Lyrics][11]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
+
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
 
@@ -111,5 +113,6 @@ License
  [8]: http://cyrilmottier.com
  [9]: https://github.com/antoniolg
  [10]: https://play.google.com/store/apps/details?id=com.yavorivanov.android.danswithme 
+ [11]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
 
 
