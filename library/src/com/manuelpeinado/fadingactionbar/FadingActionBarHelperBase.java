@@ -43,6 +43,8 @@ public abstract class FadingActionBarHelperBase {
     private int mActionBarBackgroundResId;
     private int mHeaderLayoutResId;
     private View mHeaderView;
+    private int mHeaderOverlayLayoutResId;
+    private View mHeaderOverlayView;
     private int mContentLayoutResId;
     private View mContentView;
     private LayoutInflater mInflater;
@@ -53,7 +55,7 @@ public abstract class FadingActionBarHelperBase {
     private ViewGroup mContentContainer;
     private ViewGroup mScrollView;
     private boolean mFirstGlobalLayoutPerformed;
-    private View mMarginView;
+    private FrameLayout mMarginView;
     private View mListViewBackgroundView;
 
     public final <T extends FadingActionBarHelperBase> T actionBarBackground(int drawableResId) {
@@ -73,6 +75,16 @@ public abstract class FadingActionBarHelperBase {
 
     public final <T extends FadingActionBarHelperBase> T headerView(View view) {
         mHeaderView = view;
+        return (T)this;
+    }
+
+    public final <T extends FadingActionBarHelperBase> T headerOverlayLayout(int layoutResId) {
+        mHeaderOverlayLayoutResId = layoutResId;
+        return (T)this;
+    }
+
+    public final <T extends FadingActionBarHelperBase> T headerOverlayView(View view) {
+        mHeaderOverlayView = view;
         return (T)this;
     }
 
@@ -109,7 +121,7 @@ public abstract class FadingActionBarHelperBase {
             mContentView = inflater.inflate(mContentLayoutResId, null);
         }
         if (mHeaderView == null) {
-            mHeaderView = inflater.inflate(mHeaderLayoutResId, mHeaderContainer, false);
+            mHeaderView = inflater.inflate(mHeaderLayoutResId, null, false);
         }
 
         //
@@ -121,6 +133,13 @@ public abstract class FadingActionBarHelperBase {
             root = createListView(listView);
         } else {
             root = createScrollView();
+        }
+
+        if (mHeaderOverlayView == null && mHeaderOverlayLayoutResId != 0) {
+            mHeaderOverlayView = inflater.inflate(mHeaderOverlayLayoutResId, mMarginView, false);
+        }
+        if (mHeaderOverlayView != null) {
+            mMarginView.addView(mHeaderOverlayView);
         }
 
         // Use measured height here as an estimate of the header height, later on after the layout is complete 
@@ -202,7 +221,7 @@ public abstract class FadingActionBarHelperBase {
         mHeaderContainer = (FrameLayout) mScrollView.findViewById(R.id.fab__header_container);
         initializeGradient(mHeaderContainer);
         mHeaderContainer.addView(mHeaderView, 0);
-        mMarginView = mContentContainer.findViewById(R.id.fab__content_top_margin);
+        mMarginView = (FrameLayout) mContentContainer.findViewById(R.id.fab__content_top_margin);
 
         return mScrollView;
     }
@@ -221,7 +240,7 @@ public abstract class FadingActionBarHelperBase {
         initializeGradient(mHeaderContainer);
         mHeaderContainer.addView(mHeaderView, 0);
 
-        mMarginView = new View(listView.getContext());
+        mMarginView = new FrameLayout(listView.getContext());
         mMarginView.setLayoutParams(new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT, 0));
         listView.addHeaderView(mMarginView, null, false);
 

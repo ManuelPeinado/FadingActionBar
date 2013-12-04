@@ -4,6 +4,8 @@ Change Log
 Version 3.0.0 *(2013-12-04)*
 ----------------------------
  * Revamped project structure, now all AB types (stock, sherlock, compat) are under the same repo. Stock AB support in in the main library, whereas other types are in the "extras" folder.
+* Adds support for header overlays
+* Fixes bug when content is ListView and notifyDataSetChange() is called
 
 Version 2.2.2 *(2013-07-13)*
 ----------------------------
