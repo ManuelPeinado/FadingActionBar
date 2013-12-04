@@ -24,12 +24,14 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 
 public class ListViewActivity extends Activity {
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class ListViewActivity extends Activity {
 
         ListView listView = (ListView) findViewById(android.R.id.list);
         ArrayList<String> items = loadItems(R.raw.nyc_sites);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(adapter);
     }
 
@@ -69,7 +71,20 @@ public class ListViewActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_menu, menu);
+        getMenuInflater().inflate(R.menu.listview_activity_menu, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_change_dataset) {
+            changeDataset();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void changeDataset() {
+      adapter.notifyDataSetChanged();
+  }
 }

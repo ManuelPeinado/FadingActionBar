@@ -52,28 +52,23 @@ See the demos included in the sample application for a complete overview of the 
 Known Issues
 ------------
 
-There are important issues with the library and ListViews. More specifically, the following scenarios are known to be broken:
+There is an important issue with the library and ListViews. More specifically, things don't work quite right when the activity is re-created due to a configuration change. Therefore, unless you handle configuration changes yourself, I strongly suggest you stick to having your content in a ScrollView until a solution to this issue is found.
 
-* The activity is re-created due to a configuration change.
-* The `notifyDataSetChanged` method of the ListView is invoked by the application.
-
-If none of these two scenarios take place in your application (kind of unlikely, I know) then your are good to go. Otherwise, I'd strongly suggest you stick to having your content in a ScrollView until a solution to these issues is found.
-
-For more information, see [this][7].
 
 Acknowledgements
 --------------------
 
 * Thanks to [Cyril Mottier][8] for sharing the techniques that make this library possible.
 * Thanks to [Antonio Leiva][9] for writing the Navigation Drawer sample.
+* Thanks to [Michał Motyczko][10] for coming up with a fix for an important bug.
 
 
 Who's using it
 --------------
 
-* [#ДАНСwithme][10]. This app attempts to organise information from various social network streams into a single source.
+* [#ДАНСwithme][11]. This app attempts to organise information from various social network streams into a single source.
 
-* [Pearl Jam Lyrics][11]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
+* [Pearl Jam Lyrics][12]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
 
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
@@ -125,7 +120,8 @@ License
  [7]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
  [8]: http://cyrilmottier.com
  [9]: https://github.com/antoniolg
- [10]: https://play.google.com/store/apps/details?id=com.yavorivanov.android.danswithme 
- [11]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
+ [10]: https://github.com/mozarcik/
+ [11]: https://play.google.com/store/apps/details?id=com.yavorivanov.android.danswithme 
+ [12]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
 
 
