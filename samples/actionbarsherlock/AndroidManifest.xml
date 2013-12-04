@@ -1,0 +1,62 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock"
+    android:versionCode="300"
+    android:versionName="3.0.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.HomeActivity"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.ScrollViewActivity"
+            android:icon="@drawable/ic_location_map"
+            android:label="@string/new_york_city"
+            android:theme="@style/AppTheme.TranslucentActionBar" />
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.ListViewActivity"
+            android:icon="@drawable/ic_location_map"
+            android:label="@string/new_york_city"
+            android:theme="@style/AppTheme.TranslucentActionBar" />
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.LightBackgroundActivity"
+            android:icon="@drawable/ic_location_map"
+            android:label="@string/new_york_city"
+            android:theme="@style/AppTheme.TranslucentActionBar" />
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.LightActionBarActivity"
+            android:icon="@drawable/ic_location_map_dark"
+            android:label="@string/new_york_city"
+            android:theme="@style/AppTheme.Light.TranslucentActionBar" />
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.SampleFragmentActivity"
+            android:icon="@drawable/ic_location_map_dark"
+            android:label="@string/new_york_city"
+            android:theme="@style/AppTheme.Light.TranslucentActionBar" />
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.NoParallaxActivity"
+            android:icon="@drawable/ic_location_map"
+            android:label="@string/new_york_city"
+            android:theme="@style/AppTheme.TranslucentActionBar" />
+        <activity
+            android:name="com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.NavigationDrawerActivity"
+            android:icon="@drawable/ic_location_map"
+            android:label="@string/choose_city"
+            android:theme="@style/AppTheme.TranslucentActionBar" />
+    </application>
+
+</manifest>

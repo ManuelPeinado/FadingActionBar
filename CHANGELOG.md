@@ -1,6 +1,10 @@
 Change Log
 =======================================
 
+Version 3.0.0 *(2013-12-04)*
+----------------------------
+ * Revamped project structure, now all AB types (stock, sherlock, compat) are under the same repo. Stock AB support in in the main library, whereas other types are in the "extras" folder.
+
 Version 2.2.2 *(2013-07-13)*
 ----------------------------
 * Fixes yet another severe issue in handling of ListViews (https://github.com/ManuelPeinado/FadingActionBar/issues/6)
