@@ -52,7 +52,7 @@ See the demos included in the sample application for a complete overview of the 
 Known Issues
 ------------
 
-There is an important issue with the library and ListViews. More specifically, things don't work quite right when the activity is re-created due to a configuration change. Therefore, unless you handle configuration changes yourself, I strongly suggest you stick to having your content in a ScrollView until a solution to this issue is found.
+There is an important issue with the library and ListViews. More specifically, things don't work quite right when the activity is re-created due to a configuration change. Therefore, unless you handle configuration changes yourself (or your activity is portrait/landscape only), I strongly suggest you stick to having your content in a ScrollView until a solution to this issue is found.
 
 
 Acknowledgements
