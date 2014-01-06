@@ -52,7 +52,7 @@ See the demos included in the sample application for a complete overview of the 
 Known Issues
 ------------
 
-There is an important issue with the library and ListViews. More specifically, things don't work quite right when the activity is re-created due to a configuration change. Therefore, unless you handle configuration changes yourself, I strongly suggest you stick to having your content in a ScrollView until a solution to this issue is found.
+There is an important issue with the library and ListViews. More specifically, things don't work quite right when the activity is re-created due to a configuration change. So, unless you handle configuration changes yourself (or your activity is portrait/landscape only), I strongly suggest you stick to having your content in a ScrollView until a solution to this issue is found.
 
 
 Acknowledgements
@@ -116,7 +116,7 @@ License
  [3]: https://github.com/ManuelPeinado/FadingActionBar/tree/master/samples/stock
  [4]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/ScrollViewActivity.java
  [5]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/ListViewActivity.java
- [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
+ [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
  [7]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
  [8]: http://cyrilmottier.com
  [9]: https://github.com/antoniolg
