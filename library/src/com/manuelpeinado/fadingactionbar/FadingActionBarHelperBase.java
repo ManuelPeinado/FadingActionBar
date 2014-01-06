@@ -36,6 +36,7 @@ import android.widget.ScrollView;
 
 import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
 
+@SuppressWarnings("unchecked")
 public abstract class FadingActionBarHelperBase {
     protected static final String TAG = "FadingActionBarHelper";
     private Drawable mActionBarBackgroundDrawable;
@@ -53,7 +54,6 @@ public abstract class FadingActionBarHelperBase {
     private int mLastDampedScroll;
     private int mLastHeaderHeight = -1;
     private ViewGroup mContentContainer;
-    private ViewGroup mScrollView;
     private boolean mFirstGlobalLayoutPerformed;
     private FrameLayout mMarginView;
     private View mListViewBackgroundView;
@@ -177,7 +177,7 @@ public abstract class FadingActionBarHelperBase {
     protected abstract boolean isActionBarNull();
     protected abstract void setActionBarBackgroundDrawable(Drawable drawable);
 
-   protected <T> T getActionBarWithReflection(Activity activity, String methodName) {
+    protected <T> T getActionBarWithReflection(Activity activity, String methodName) {
         try {
             Method method = activity.getClass().getMethod(methodName);
             return (T)method.invoke(activity);
@@ -211,19 +211,19 @@ public abstract class FadingActionBarHelperBase {
     };
 
     private View createScrollView() {
-        mScrollView = (ViewGroup) mInflater.inflate(R.layout.fab__scrollview_container, null);
+        ViewGroup scrollViewContainer = (ViewGroup) mInflater.inflate(R.layout.fab__scrollview_container, null);
 
-        NotifyingScrollView scrollView = (NotifyingScrollView) mScrollView.findViewById(R.id.fab__scroll_view);
+        NotifyingScrollView scrollView = (NotifyingScrollView) scrollViewContainer.findViewById(R.id.fab__scroll_view);
         scrollView.setOnScrollChangedListener(mOnScrollChangedListener);
 
-        mContentContainer = (ViewGroup) mScrollView.findViewById(R.id.fab__container);
+        mContentContainer = (ViewGroup) scrollViewContainer.findViewById(R.id.fab__container);
         mContentContainer.addView(mContentView);
-        mHeaderContainer = (FrameLayout) mScrollView.findViewById(R.id.fab__header_container);
+        mHeaderContainer = (FrameLayout) scrollViewContainer.findViewById(R.id.fab__header_container);
         initializeGradient(mHeaderContainer);
         mHeaderContainer.addView(mHeaderView, 0);
         mMarginView = (FrameLayout) mContentContainer.findViewById(R.id.fab__content_top_margin);
 
-        return mScrollView;
+        return scrollViewContainer;
     }
 
     private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {

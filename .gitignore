@@ -28,6 +28,5 @@ pom.xml.*
 apks
 
 # Gradle
-library/build
-sample/build
+build
 .gradle

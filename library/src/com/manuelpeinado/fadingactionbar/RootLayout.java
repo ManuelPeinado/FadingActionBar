@@ -7,7 +7,6 @@ import android.widget.FrameLayout;
 
 public class RootLayout extends FrameLayout {
 
-    private static final String LOG_TAG = "RootLayout";
     private View mHeaderContainer;
     private View mListViewBackground;
     private boolean mInitialized = false;

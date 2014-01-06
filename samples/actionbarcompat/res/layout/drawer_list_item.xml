@@ -2,7 +2,7 @@
           android:id="@android:id/text1"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:textAppearance="?android:attr/textAppearanceListItemSmall"
+          android:textAppearance="?android:attr/textAppearanceLarge"
           android:gravity="center_vertical"
           android:paddingLeft="16dp"
           android:paddingRight="16dp"

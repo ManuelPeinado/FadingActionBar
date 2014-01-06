@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
 
     <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/Widget.ActionBar</item>

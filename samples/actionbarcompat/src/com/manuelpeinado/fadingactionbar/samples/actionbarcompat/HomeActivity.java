@@ -36,7 +36,6 @@ public class HomeActivity extends ListActivity {
             new ActivityInfo(LightActionBarActivity.class, R.string.activity_title_light_ab),
             new ActivityInfo(SampleFragmentActivity.class, R.string.activity_title_fragment),
             new ActivityInfo(NoParallaxActivity.class, R.string.activity_title_no_parallax),
-            new ActivityInfo(NavigationDrawerActivity.class, R.string.activity_title_navigation),
             new ActivityInfo(HeaderOverlayActivity.class, R.string.activity_title_header_overlay));
 
     @Override
