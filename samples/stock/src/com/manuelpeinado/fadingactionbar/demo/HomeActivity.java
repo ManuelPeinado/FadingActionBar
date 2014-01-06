@@ -35,7 +35,8 @@ public class HomeActivity extends ListActivity {
             new ActivityInfo(SampleFragmentActivity.class, R.string.activity_title_fragment),
             new ActivityInfo(NoParallaxActivity.class, R.string.activity_title_no_parallax),
             new ActivityInfo(NavigationDrawerActivity.class, R.string.activity_title_navigation),
-            new ActivityInfo(HeaderOverlayActivity.class, R.string.activity_title_header_overlay));
+            new ActivityInfo(HeaderOverlayActivity.class, R.string.activity_title_header_overlay),
+            new ActivityInfo(ViewPagerActivity.class, R.string.activity_title_view_pager));
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {

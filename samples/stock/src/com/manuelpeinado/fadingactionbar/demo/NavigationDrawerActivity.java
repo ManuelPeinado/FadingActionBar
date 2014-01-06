@@ -16,13 +16,13 @@
  */
 package com.manuelpeinado.fadingactionbar.demo;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
@@ -31,7 +31,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class NavigationDrawerActivity extends Activity implements AdapterView.OnItemClickListener {
+public class NavigationDrawerActivity extends FragmentActivity implements AdapterView.OnItemClickListener {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -128,7 +128,7 @@ public class NavigationDrawerActivity extends Activity implements AdapterView.On
         args.putInt(SampleFragment.ARG_ACTION_BG_RES, R.drawable.ab_background);
         fragment.setArguments(args);
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         // update selected item and title, then close the drawer

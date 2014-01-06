@@ -16,15 +16,36 @@
 package com.manuelpeinado.fadingactionbar.demo;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
-public class SampleFragmentActivity extends FragmentActivity {
+public class ViewPagerActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment);
+        setContentView(R.layout.activity_view_pager);
+        
+        ViewPager viewPager = (ViewPager)findViewById(R.id.viewPager);
+        viewPager.setAdapter(createViewPagerAdapter());
+   }
+
+    private PagerAdapter createViewPagerAdapter() {
+        return new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public int getCount() {
+                return 3;
+            }
+
+            @Override
+            public Fragment getItem(int position) {
+                return new SampleFragment();
+            }
+        };
     }
 
     @Override
