@@ -5,11 +5,4 @@
 
     <include layout="@layout/fab__header_container" />
 
-    <View
-        android:layout_gravity="top"
-        android:id="@+id/fab__listview_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/background_light" />
-
 </com.manuelpeinado.fadingactionbar.view.RootLayout>

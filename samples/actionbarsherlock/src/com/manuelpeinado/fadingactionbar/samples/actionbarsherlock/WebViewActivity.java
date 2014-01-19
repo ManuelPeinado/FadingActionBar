@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.manuelpeinado.fadingactionbar.samples.actionbarcompat;
+package com.manuelpeinado.fadingactionbar.samples.actionbarsherlock;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
-import com.manuelpeinado.fadingactionbar.extras.actionbarcompat.FadingActionBarHelper;
-import com.manuelpeinado.fadingactionbar.samples.actionbarcompat.R;
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.manuelpeinado.fadingactionbar.extras.actionbarsherlock.FadingActionBarHelper;
 
-public class ScrollViewActivity extends ActionBarActivity {
+public class WebViewActivity extends SherlockActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +32,18 @@ public class ScrollViewActivity extends ActionBarActivity {
         FadingActionBarHelper helper = new FadingActionBarHelper()
             .actionBarBackground(R.drawable.ab_background)
             .headerLayout(R.layout.header)
-            .contentLayout(R.layout.activity_scrollview);
+            .contentLayout(R.layout.activity_webview);
         setContentView(helper.createView(this));
         helper.initActionBar(this);
+
+        WebView webView = (WebView) findViewById(R.id.webView);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("http://en.wikipedia.org/wiki/New_York_City");
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_menu, menu);
+        getSupportMenuInflater().inflate(R.menu.activity_menu, menu);
         return true;
     }
 }

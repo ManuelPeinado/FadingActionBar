@@ -16,4 +16,5 @@
     <string name="activity_title_header_overlay">Header Overlay Example</string>
     <string name="choose_city">Choose a city</string>
     <string name="action_change_dataset">Change dataset</string>
+    <string name="activity_title_webview">WebView sample</string>
 </resources>

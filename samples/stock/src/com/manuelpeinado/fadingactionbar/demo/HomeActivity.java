@@ -35,8 +35,9 @@ public class HomeActivity extends ListActivity {
             new ActivityInfo(SampleFragmentActivity.class, R.string.activity_title_fragment),
             new ActivityInfo(NoParallaxActivity.class, R.string.activity_title_no_parallax),
             new ActivityInfo(NavigationDrawerActivity.class, R.string.activity_title_navigation),
-            new ActivityInfo(HeaderOverlayActivity.class, R.string.activity_title_header_overlay));
-    
+            new ActivityInfo(HeaderOverlayActivity.class, R.string.activity_title_header_overlay),
+            new ActivityInfo(WebViewActivity.class, R.string.activity_title_webview));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class HomeActivity extends ListActivity {
         setListAdapter(new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, android.R.id.text1, titles));
     }
-    
+
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Class<? extends Activity> class_ = activitiesInfo.get(position).activityClass;

@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 
 import android.widget.ImageView;
 import com.actionbarsherlock.app.SherlockFragment;
-import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
+import com.manuelpeinado.fadingactionbar.extras.actionbarsherlock.FadingActionBarHelper;
 import com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.R;
 
 public class SampleFragment extends SherlockFragment {

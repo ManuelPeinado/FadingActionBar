@@ -35,7 +35,8 @@ public class HomeActivity extends SherlockListActivity {
             new ActivityInfo(LightActionBarActivity.class, R.string.activity_title_light_ab),
             new ActivityInfo(SampleFragmentActivity.class, R.string.activity_title_fragment),
             new ActivityInfo(NoParallaxActivity.class, R.string.activity_title_no_parallax),
-            new ActivityInfo(HeaderOverlayActivity.class, R.string.activity_title_header_overlay));
+            new ActivityInfo(HeaderOverlayActivity.class, R.string.activity_title_header_overlay),
+            new ActivityInfo(WebViewActivity.class, R.string.activity_title_webview));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

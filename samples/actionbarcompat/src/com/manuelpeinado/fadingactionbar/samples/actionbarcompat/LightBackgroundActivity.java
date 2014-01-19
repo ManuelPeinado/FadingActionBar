@@ -19,7 +19,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 
-import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
+import com.manuelpeinado.fadingactionbar.extras.actionbarcompat.FadingActionBarHelper;
 import com.manuelpeinado.fadingactionbar.samples.actionbarcompat.R;
 
 public class LightBackgroundActivity extends ActionBarActivity {

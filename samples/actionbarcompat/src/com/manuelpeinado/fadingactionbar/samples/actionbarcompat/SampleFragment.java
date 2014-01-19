@@ -23,7 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageView;
-import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
+import com.manuelpeinado.fadingactionbar.extras.actionbarcompat.FadingActionBarHelper;
 import com.manuelpeinado.fadingactionbar.samples.actionbarcompat.R;
 
 public class SampleFragment extends Fragment {

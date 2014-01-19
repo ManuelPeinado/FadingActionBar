@@ -27,7 +27,7 @@ import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
-import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
+import com.manuelpeinado.fadingactionbar.extras.actionbarsherlock.FadingActionBarHelper;
 import com.manuelpeinado.fadingactionbar.samples.actionbarsherlock.R;
 
 public class ListViewActivity extends SherlockActivity {

@@ -13,10 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.manuelpeinado.fadingactionbar.extras.actionbarsherlock;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+package com.manuelpeinado.fadingactionbar.extras.actionbarcompat;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -41,7 +38,7 @@ public final class FadingActionBarHelper extends FadingActionBarHelperBase {
         }
         ActionBar actionBar = getActionBarWithReflection(activity, "getSupportActionBar");
         if (actionBar == null) {
-            throw new RuntimeException("Activity should derive from one of ActionBarActivity "
+            throw new RuntimeException("Activity should derive from ActionBarActivity "
                 + "or implement a method called getSupportActionBar");
         }
         return actionBar;

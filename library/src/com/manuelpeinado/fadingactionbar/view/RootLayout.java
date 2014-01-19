@@ -1,9 +1,11 @@
-package com.manuelpeinado.fadingactionbar;
+package com.manuelpeinado.fadingactionbar.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.manuelpeinado.fadingactionbar.R;
 
 public class RootLayout extends FrameLayout {
 

@@ -18,11 +18,12 @@ package com.manuelpeinado.fadingactionbar.samples.actionbarcompat;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.manuelpeinado.fadingactionbar.extras.actionbarcompat.FadingActionBarHelper;
-import com.manuelpeinado.fadingactionbar.samples.actionbarcompat.R;
 
-public class ScrollViewActivity extends ActionBarActivity {
+public class WebViewActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,13 @@ public class ScrollViewActivity extends ActionBarActivity {
         FadingActionBarHelper helper = new FadingActionBarHelper()
             .actionBarBackground(R.drawable.ab_background)
             .headerLayout(R.layout.header)
-            .contentLayout(R.layout.activity_scrollview);
+            .contentLayout(R.layout.activity_webview);
         setContentView(helper.createView(this));
         helper.initActionBar(this);
+
+        WebView webView = (WebView) findViewById(R.id.webView);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("http://en.wikipedia.org/wiki/New_York_City");
     }
 
     @Override

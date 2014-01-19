@@ -27,7 +27,7 @@ import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
+import com.manuelpeinado.fadingactionbar.extras.actionbarcompat.FadingActionBarHelper;
 import com.manuelpeinado.fadingactionbar.samples.actionbarcompat.R;
 
 public class ListViewActivity extends ActionBarActivity {

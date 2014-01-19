@@ -1,4 +1,5 @@
-package com.cyrilmottier.android.translucentactionbar;
+package com.manuelpeinado.fadingactionbar.view;
+
 
 import android.content.Context;
 import android.os.Build;
@@ -8,28 +9,21 @@ import android.widget.ScrollView;
 /**
  * @author Cyril Mottier with modifications from Manuel Peinado
  */
-public class NotifyingScrollView extends ScrollView {
+public class ObservableScrollView extends ScrollView implements ObservableScrollable {
     // Edge-effects don't mix well with the translucent action bar in Android 2.X
     private boolean mDisableEdgeEffects = true;
 
-    /**
-     * @author Cyril Mottier
-     */
-    public interface OnScrollChangedListener {
-        void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt);
-    }
+    private OnScrollChangedCallback mOnScrollChangedListener;
 
-    private OnScrollChangedListener mOnScrollChangedListener;
-
-    public NotifyingScrollView(Context context) {
+    public ObservableScrollView(Context context) {
         super(context);
     }
 
-    public NotifyingScrollView(Context context, AttributeSet attrs) {
+    public ObservableScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public NotifyingScrollView(Context context, AttributeSet attrs, int defStyle) {
+    public ObservableScrollView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -37,12 +31,8 @@ public class NotifyingScrollView extends ScrollView {
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
         if (mOnScrollChangedListener != null) {
-            mOnScrollChangedListener.onScrollChanged(this, l, t, oldl, oldt);
+            mOnScrollChangedListener.onScroll(l, t);
         }
-    }
-
-    public void setOnScrollChangedListener(OnScrollChangedListener listener) {
-        mOnScrollChangedListener = listener;
     }
 
     @Override
@@ -61,5 +51,10 @@ public class NotifyingScrollView extends ScrollView {
             return 0.0f;
         }
         return super.getBottomFadingEdgeStrength();
+    }
+
+    @Override
+    public void setOnScrollChangedCallback(OnScrollChangedCallback callback) {
+        mOnScrollChangedListener = callback;
     }
 }

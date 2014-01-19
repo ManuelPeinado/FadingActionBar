@@ -20,6 +20,7 @@ import java.lang.reflect.Method;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -32,9 +33,10 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
 
-import com.cyrilmottier.android.translucentactionbar.NotifyingScrollView;
+import com.manuelpeinado.fadingactionbar.view.ObservableScrollView;
+import com.manuelpeinado.fadingactionbar.view.ObservableWebViewWithHeader;
+import com.manuelpeinado.fadingactionbar.view.OnScrollChangedCallback;
 
 @SuppressWarnings("unchecked")
 public abstract class FadingActionBarHelperBase {
@@ -53,7 +55,6 @@ public abstract class FadingActionBarHelperBase {
     private boolean mUseParallax = true;
     private int mLastDampedScroll;
     private int mLastHeaderHeight = -1;
-    private ViewGroup mContentContainer;
     private boolean mFirstGlobalLayoutPerformed;
     private FrameLayout mMarginView;
     private View mListViewBackgroundView;
@@ -125,12 +126,14 @@ public abstract class FadingActionBarHelperBase {
         }
 
         //
-        // See if we are in a ListView or ScrollView scenario
+        // See if we are in a ListView, WebView or ScrollView scenario
 
         ListView listView = (ListView) mContentView.findViewById(android.R.id.list);
         View root;
         if (listView != null) {
             root = createListView(listView);
+        } else if (mContentView instanceof ObservableWebViewWithHeader){
+            root = createWebView();
         } else {
             root = createScrollView();
         }
@@ -210,33 +213,54 @@ public abstract class FadingActionBarHelperBase {
         }
     };
 
+    private View createWebView() {
+        ViewGroup webViewContainer = (ViewGroup) mInflater.inflate(R.layout.fab__webview_container, null);
+
+        ObservableWebViewWithHeader webView = (ObservableWebViewWithHeader) mContentView;
+        webView.setOnScrollChangedCallback(mOnScrollChangedListener);
+
+        webViewContainer.addView(webView);
+
+        mHeaderContainer = (FrameLayout) webViewContainer.findViewById(R.id.fab__header_container);
+        initializeGradient(mHeaderContainer);
+        mHeaderContainer.addView(mHeaderView, 0);
+
+        mMarginView = new FrameLayout(webView.getContext());
+        mMarginView.setBackgroundColor(Color.TRANSPARENT);
+        mMarginView.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        webView.addView(mMarginView);
+
+        return webViewContainer;
+    }
+
     private View createScrollView() {
         ViewGroup scrollViewContainer = (ViewGroup) mInflater.inflate(R.layout.fab__scrollview_container, null);
 
-        NotifyingScrollView scrollView = (NotifyingScrollView) scrollViewContainer.findViewById(R.id.fab__scroll_view);
-        scrollView.setOnScrollChangedListener(mOnScrollChangedListener);
+        ObservableScrollView scrollView = (ObservableScrollView) scrollViewContainer.findViewById(R.id.fab__scroll_view);
+        scrollView.setOnScrollChangedCallback(mOnScrollChangedListener);
 
-        mContentContainer = (ViewGroup) scrollViewContainer.findViewById(R.id.fab__container);
-        mContentContainer.addView(mContentView);
+        ViewGroup contentContainer = (ViewGroup) scrollViewContainer.findViewById(R.id.fab__container);
+        contentContainer.addView(mContentView);
         mHeaderContainer = (FrameLayout) scrollViewContainer.findViewById(R.id.fab__header_container);
         initializeGradient(mHeaderContainer);
         mHeaderContainer.addView(mHeaderView, 0);
-        mMarginView = (FrameLayout) mContentContainer.findViewById(R.id.fab__content_top_margin);
+        mMarginView = (FrameLayout) contentContainer.findViewById(R.id.fab__content_top_margin);
 
         return scrollViewContainer;
     }
 
-    private NotifyingScrollView.OnScrollChangedListener mOnScrollChangedListener = new NotifyingScrollView.OnScrollChangedListener() {
-        public void onScrollChanged(ScrollView who, int l, int t, int oldl, int oldt) {
+    private OnScrollChangedCallback mOnScrollChangedListener = new OnScrollChangedCallback() {
+        public void onScroll(int l, int t) {
             onNewScroll(t);
         }
     };
 
     private View createListView(ListView listView) {
-        mContentContainer = (ViewGroup) mInflater.inflate(R.layout.fab__listview_container, null);
-        mContentContainer.addView(mContentView);
+        ViewGroup contentContainer = (ViewGroup) mInflater.inflate(R.layout.fab__listview_container, null);
+        contentContainer.addView(mContentView);
 
-        mHeaderContainer = (FrameLayout) mContentContainer.findViewById(R.id.fab__header_container);
+        mHeaderContainer = (FrameLayout) contentContainer.findViewById(R.id.fab__header_container);
         initializeGradient(mHeaderContainer);
         mHeaderContainer.addView(mHeaderView, 0);
 
@@ -245,13 +269,13 @@ public abstract class FadingActionBarHelperBase {
         listView.addHeaderView(mMarginView, null, false);
 
         // Make the background as high as the screen so that it fills regardless of the amount of scroll. 
-        mListViewBackgroundView = mContentContainer.findViewById(R.id.fab__listview_background);
+        mListViewBackgroundView = contentContainer.findViewById(R.id.fab__listview_background);
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mListViewBackgroundView.getLayoutParams();
         params.height = Utils.getDisplayHeight(listView.getContext());
         mListViewBackgroundView.setLayoutParams(params);
 
         listView.setOnScrollListener(mOnScrollListener);
-        return mContentContainer;
+        return contentContainer;
     }
 
     private OnScrollListener mOnScrollListener = new OnScrollListener() {
