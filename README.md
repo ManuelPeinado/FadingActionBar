@@ -24,16 +24,16 @@ Including in your project
 The library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
     
     dependencies {
-        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar:3.0.0'
+        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar:3.1.0'
     }
     
 If your project doesn't use the stock action bar, but one of the compatibility implementations, you would use the following:
 
     dependencies {
         // Use the following if your project uses ActionBarCompat
-        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abc:3.0.0'
+        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abc:3.1.0'
         // Or the following if your project uses ActionBarSherlock
-        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abs:3.0.0'
+        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abs:3.1.0'
     }
 
 
@@ -44,8 +44,9 @@ Using the library is really simple, just look at the source code of the provided
 
 * [If your content should be in a `ScrollView`][4].
 * [If your content should be in a `ListView`][5].
+* [If your content should be in a `ListView`][6].
 
-You can even use the library [from a fragment][6], which is useful when implementing a dual phone/tablet layout.
+You can even use the library [from a fragment][7], which is useful when implementing a dual phone/tablet layout.
 
 See the demos included in the sample application for a complete overview of the features supported by the library.
 
@@ -58,17 +59,17 @@ There is an important issue with the library and ListViews. More specifically, t
 Acknowledgements
 --------------------
 
-* Thanks to [Cyril Mottier][8] for sharing the techniques that make this library possible.
-* Thanks to [Antonio Leiva][9] for writing the Navigation Drawer sample.
-* Thanks to [Michał Motyczko][10] for coming up with a fix for an important bug.
+* Thanks to [Cyril Mottier][9] for sharing the techniques that make this library possible.
+* Thanks to [Antonio Leiva][10] for writing the Navigation Drawer sample.
+* Thanks to [Michał Motyczko][11] for coming up with a fix for an important bug.
 
 
 Who's using it
 --------------
 
-* [#ДАНСwithme][11]. This app attempts to organise information from various social network streams into a single source.
+* [#ДАНСwithme][12]. This app attempts to organise information from various social network streams into a single source.
 
-* [Pearl Jam Lyrics][12]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
+* [Pearl Jam Lyrics][13]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
 
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
@@ -116,12 +117,13 @@ License
  [3]: https://github.com/ManuelPeinado/FadingActionBar/tree/master/samples/stock
  [4]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/ScrollViewActivity.java
  [5]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/ListViewActivity.java
- [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
- [7]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
- [8]: http://cyrilmottier.com
- [9]: https://github.com/antoniolg
- [10]: https://github.com/mozarcik/
- [11]: https://play.google.com/store/apps/details?id=com.yavorivanov.android.danswithme 
- [12]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
+ [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/WebViewActivity.java
+ [7]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
+ [8]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
+ [9]: http://cyrilmottier.com
+ [10]: https://github.com/antoniolg
+ [11]: https://github.com/mozarcik/
+ [12]: https://play.google.com/store/apps/details?id=com.yavorivanov.android.danswithme 
+ [13]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
 
 
