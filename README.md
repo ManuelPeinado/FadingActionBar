@@ -44,7 +44,7 @@ Using the library is really simple, just look at the source code of the provided
 
 * [If your content should be in a `ScrollView`][4].
 * [If your content should be in a `ListView`][5].
-* [If your content should be in a `ListView`][6].
+* [If your content is a `WebView`][6].
 
 You can even use the library [from a fragment][7], which is useful when implementing a dual phone/tablet layout.
 
@@ -95,7 +95,7 @@ Manuel Peinado Gallego - <manuel.peinado@gmail.com>
 License
 -----------
 
-    Copyright 2013 Manuel Peinado
+    Copyright 2013,2014 Manuel Peinado
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
