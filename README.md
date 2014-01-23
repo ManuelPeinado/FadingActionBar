@@ -70,6 +70,7 @@ Who's using it
 * [#ДАНСwithme][12]. This app attempts to organise information from various social network streams into a single source.
 
 * [Pearl Jam Lyrics][13]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
+* [Weatherize][14]. A weather app that is designed to look great and tell you the weather like a human does, not a machine.
 
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
@@ -125,5 +126,5 @@ License
  [11]: https://github.com/mozarcik/
  [12]: https://play.google.com/store/apps/details?id=com.yavorivanov.android.danswithme 
  [13]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
-
+ [14]: https://play.google.com/store/apps/details?id=com.etheralstudios.weatherize
 
