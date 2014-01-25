@@ -26,7 +26,7 @@ import android.widget.ImageView;
 
 import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 
-public class SampleFragment extends Fragment {
+public class SampleFragment extends Fragment implements NavigationDrawerActivity.ActionBarHolder {
     private FadingActionBarHelper mFadingHelper;
     private Bundle mArguments;
 
@@ -58,5 +58,21 @@ public class SampleFragment extends Fragment {
             .contentLayout(R.layout.activity_scrollview)
             .lightActionBar(actionBarBg == R.drawable.ab_background_light);
         mFadingHelper.initActionBar(activity);
+    }
+
+    @Override
+    public void overrideAlpha(int alpha) {
+        if (mFadingHelper != null){
+            mFadingHelper.setActionBarAlpha(alpha);
+        }
+    }
+
+    @Override
+    public int getAlpha(){
+        if (mFadingHelper != null){
+            return mFadingHelper.getActionbarAlpha();
+        } else {
+            return 0;
+        }
     }
 }
