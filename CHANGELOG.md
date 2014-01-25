@@ -1,6 +1,12 @@
 Change Log
 =======================================
 
+Version 3.1.1 *(2014-01-25)*
+----------------------------
+ * Remove actionbar shadow from samples.
+ * Library not modified, version not uploaded to maven central.
+
+
 Version 3.1.0 *(2014-01-19)*
 ----------------------------
  * Added support for WebView content.
