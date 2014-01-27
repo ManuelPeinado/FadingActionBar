@@ -68,7 +68,6 @@ Who's using it
 --------------
 
 * [#ДАНСwithme][12]. This app attempts to organise information from various social network streams into a single source.
-
 * [Pearl Jam Lyrics][13]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
 * [Weatherize][14]. A weather app that is designed to look great and tell you the weather like a human does, not a machine.
 * [Last.fm for Android][15]. Do you think the official Last.fm app feels a little bit outdated? Check out this one! It has a scrobbler, and a non-ugly holo interface.
