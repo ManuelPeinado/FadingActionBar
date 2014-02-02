@@ -71,6 +71,7 @@ Who's using it
 * [Pearl Jam Lyrics][13]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
 * [Weatherize][14]. A weather app that is designed to look great and tell you the weather like a human does, not a machine.
 * [Last.fm for Android][15]. Do you think the official Last.fm app feels a little bit outdated? Check out this one! It has a scrobbler, and a non-ugly holo interface.
+* [Watch South Park Episodes][16]. Watch full-length South Park episodes directly from your phone! Browse through your favorite season or search for your favorite episode!
 
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
@@ -128,4 +129,5 @@ License
  [13]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
  [14]: https://play.google.com/store/apps/details?id=com.etheralstudios.weatherize
  [15]: https://play.google.com/store/apps/details?id=com.garli.lastfm
+ [16]: https://play.google.com/store/apps/details?id=com.praxis.splol
 
