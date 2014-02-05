@@ -29,13 +29,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class NavigationDrawerActivity extends Activity implements AdapterView.OnItemClickListener {
 
     private DrawerLayout mDrawerLayout;
+    private LinearLayout mDrawer;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+    private ActionBarHolder mActionbarHolder;
+
+    private boolean mDrawerIsOpen = false;
+    private int mDrawerState = DrawerLayout.STATE_IDLE;
+    private int mOldAlpha = 0;
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
@@ -56,7 +63,8 @@ public class NavigationDrawerActivity extends Activity implements AdapterView.On
         }
         typedArray.recycle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawer = (LinearLayout) findViewById(R.id.left_drawer);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer_list);
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -80,10 +88,31 @@ public class NavigationDrawerActivity extends Activity implements AdapterView.On
         ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
+                mDrawerIsOpen = false;
             }
 
             public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle(mDrawerTitle);
+                mDrawerIsOpen = true;
+            }
+
+            public void onDrawerStateChanged(int newState) {
+                super.onDrawerStateChanged(newState);
+
+                if (!mDrawerIsOpen && mDrawerState == DrawerLayout.STATE_IDLE && mActionbarHolder != null) {
+                    mOldAlpha = mActionbarHolder.getAlpha();
+                }
+
+                mDrawerState = newState;
+            }
+
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+
+                if (mActionbarHolder != null) {
+                    int newAlpha = Math.round(mOldAlpha + ((255 - mOldAlpha) * slideOffset));
+                    mActionbarHolder.overrideAlpha(newAlpha);
+                }
             }
         };
 
@@ -131,10 +160,13 @@ public class NavigationDrawerActivity extends Activity implements AdapterView.On
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
+        mActionbarHolder = (ActionBarHolder) fragment;
+        mOldAlpha = 0;
+
         // update selected item and title, then close the drawer
         mDrawerList.setItemChecked(position, true);
         setTitle(mCityNames[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);
+        mDrawerLayout.closeDrawer(mDrawer);
     }
 
     @Override
@@ -142,4 +174,12 @@ public class NavigationDrawerActivity extends Activity implements AdapterView.On
         mTitle = title;
         getActionBar().setTitle(mTitle);
     }
+
+    public interface ActionBarHolder {
+
+        public void overrideAlpha(int alpha);
+
+        public int getAlpha();
+    }
+
 }

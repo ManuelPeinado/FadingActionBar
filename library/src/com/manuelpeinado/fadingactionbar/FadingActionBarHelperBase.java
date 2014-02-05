@@ -58,6 +58,7 @@ public abstract class FadingActionBarHelperBase {
     private boolean mFirstGlobalLayoutPerformed;
     private FrameLayout mMarginView;
     private View mListViewBackgroundView;
+    private int mActionBarAlpha = 255;
 
     public final <T extends FadingActionBarHelperBase> T actionBarBackground(int drawableResId) {
         mActionBarBackgroundResId = drawableResId;
@@ -173,7 +174,16 @@ public abstract class FadingActionBarHelperBase {
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
             mActionBarBackgroundDrawable.setCallback(mDrawableCallback);
         }
-        mActionBarBackgroundDrawable.setAlpha(0);
+        setActionBarAlpha(0);
+    }
+
+    public int getActionbarAlpha(){
+        return mActionBarAlpha;
+    }
+
+    public void setActionBarAlpha(int alpha){
+        mActionBarBackgroundDrawable.setAlpha(alpha);
+        mActionBarAlpha = alpha;
     }
 
     protected abstract int getActionBarHeight();
@@ -310,7 +320,7 @@ public abstract class FadingActionBarHelperBase {
         int headerHeight = currentHeaderHeight - getActionBarHeight();
         float ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
         int newAlpha = (int) (ratio * 255);
-        mActionBarBackgroundDrawable.setAlpha(newAlpha);
+        setActionBarAlpha(newAlpha);
 
         addParallaxEffect(scrollPosition);
     }
