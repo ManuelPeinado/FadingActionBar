@@ -1,6 +1,11 @@
 Change Log
 =======================================
 
+Version 3.1.2 *(2014-03-12)*
+----------------------------
+ * Fill available space when content too small. Prompted by this [SO question](http://stackoverflow.com/questions/22332696/fadingactionbar-linearlayout-does-not-match-parent).
+
+
 Version 3.1.1 *(2014-01-25)*
 ----------------------------
  * Remove actionbar shadow from samples.

@@ -36,7 +36,8 @@ public class HomeActivity extends ListActivity {
             new ActivityInfo(NoParallaxActivity.class, R.string.activity_title_no_parallax),
             new ActivityInfo(NavigationDrawerActivity.class, R.string.activity_title_navigation),
             new ActivityInfo(HeaderOverlayActivity.class, R.string.activity_title_header_overlay),
-            new ActivityInfo(WebViewActivity.class, R.string.activity_title_webview));
+            new ActivityInfo(WebViewActivity.class, R.string.activity_title_webview),
+            new ActivityInfo(ShortContentActivity.class, R.string.activity_title_short_content));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

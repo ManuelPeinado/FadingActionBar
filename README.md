@@ -24,16 +24,16 @@ Including in your project
 The library is pushed to Maven Central as a AAR, so you just need to add the following dependency to your `build.gradle`.
     
     dependencies {
-        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar:3.1.0'
+        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar:3.1.2'
     }
     
 If your project doesn't use the stock action bar, but one of the compatibility implementations, you would use the following:
 
     dependencies {
         // Use the following if your project uses ActionBarCompat
-        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abc:3.1.0'
+        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abc:3.1.2'
         // Or the following if your project uses ActionBarSherlock
-        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abs:3.1.0'
+        compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar-abs:3.1.2'
     }
 
 

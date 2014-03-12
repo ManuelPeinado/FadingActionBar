@@ -32,6 +32,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.manuelpeinado.fadingactionbar.view.ObservableScrollView;
@@ -241,6 +242,9 @@ public abstract class FadingActionBarHelperBase {
         scrollView.setOnScrollChangedCallback(mOnScrollChangedListener);
 
         ViewGroup contentContainer = (ViewGroup) scrollViewContainer.findViewById(R.id.fab__container);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+        		LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        mContentView.setLayoutParams(layoutParams);
         contentContainer.addView(mContentView);
         mHeaderContainer = (FrameLayout) scrollViewContainer.findViewById(R.id.fab__header_container);
         initializeGradient(mHeaderContainer);
