@@ -170,12 +170,22 @@ public abstract class FadingActionBarHelperBase {
         if (mActionBarBackgroundDrawable == null) {
             mActionBarBackgroundDrawable = activity.getResources().getDrawable(mActionBarBackgroundResId);
         }
-        setActionBarBackgroundDrawable(mActionBarBackgroundDrawable);
+        applyBackgroundDrawable();
+        mActionBarBackgroundDrawable.setAlpha(0);
+    }
+
+    public void setActionBarBackground(Drawable background) {
+    	mActionBarBackgroundDrawable = background;
+    	applyBackgroundDrawable();
+    	setAlpha(mLastScrollPosition);
+    }
+    
+    private void applyBackgroundDrawable() {
+		setActionBarBackgroundDrawable(mActionBarBackgroundDrawable);
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
             mActionBarBackgroundDrawable.setCallback(mDrawableCallback);
         }
-        mActionBarBackgroundDrawable.setAlpha(0);
-    }
+	}
 
     protected abstract int getActionBarHeight();
     protected abstract boolean isActionBarNull();
@@ -305,8 +315,13 @@ public abstract class FadingActionBarHelperBase {
         if (isActionBarNull()) {
             return;
         }
+        
+        setAlpha(scrollPosition);
+        addParallaxEffect(scrollPosition);
+    }
 
-        int currentHeaderHeight = mHeaderContainer.getHeight();
+	private void setAlpha(int scrollPosition) {
+		int currentHeaderHeight = mHeaderContainer.getHeight();
         if (currentHeaderHeight != mLastHeaderHeight) {
             updateHeaderHeight(currentHeaderHeight);
         }
@@ -315,9 +330,7 @@ public abstract class FadingActionBarHelperBase {
         float ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
         int newAlpha = (int) (ratio * 255);
         mActionBarBackgroundDrawable.setAlpha(newAlpha);
-
-        addParallaxEffect(scrollPosition);
-    }
+	}
 
     private void addParallaxEffect(int scrollPosition) {
         float damping = mUseParallax ? 0.5f : 1.0f;
