@@ -1,8 +1,8 @@
 include ':library'
-include ':samples/stock'
+include ':samples-stock'
 
-include 'extras/actionbarsherlock'
-include ':samples/actionbarsherlock'
+include 'extras-actionbarsherlock'
+include ':samples-actionbarsherlock'
 
-include 'extras/actionbarcompat'
-include ':samples/actionbarcompat'
+include 'extras-actionbarcompat'
+include ':samples-actionbarcompat'
