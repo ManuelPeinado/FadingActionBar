@@ -59,20 +59,20 @@ There is an important issue with the library and ListViews. More specifically, t
 Acknowledgements
 --------------------
 
-* Thanks to [Cyril Mottier][9] for sharing the techniques that make this library possible.
-* Thanks to [Antonio Leiva][10] for writing the Navigation Drawer sample.
-* Thanks to [Michał Motyczko][11] for coming up with a fix for an important bug.
+* Thanks to [Cyril Mottier][8] for sharing the techniques that make this library possible.
+* Thanks to [Antonio Leiva][9] for writing the Navigation Drawer sample.
+* Thanks to [Michał Motyczko][10] for coming up with a fix for an important bug.
 
 
 Who's using it
 --------------
 
-* [#ДАНСwithme][12]. This app attempts to organise information from various social network streams into a single source.
-* [Pearl Jam Lyrics][13]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
-* [Weatherize][14]. A weather app that is designed to look great and tell you the weather like a human does, not a machine.
-* [Last.fm for Android][15]. Do you think the official Last.fm app feels a little bit outdated? Check out this one! It has a scrobbler, and a non-ugly holo interface.
-* [Watch South Park Episodes][16]. Watch full-length South Park episodes directly from your phone! Browse through your favorite season or search for your favorite episode!
-* [Gas Monitor][17]. An application designed around individuals who keep track of their fill history on their vehicles: from price, gallons, date purchased, and miles traveled.
+* [#ДАНСwithme][11]. This app attempts to organise information from various social network streams into a single source.
+* [Pearl Jam Lyrics][12]. Unofficial app for Pearl Jam fans that want to have all the lyrics of their favorite band in the palm of their hands.
+* [Weatherize][13]. A weather app that is designed to look great and tell you the weather like a human does, not a machine.
+* [Last.fm for Android][14]. Do you think the official Last.fm app feels a little bit outdated? Check out this one! It has a scrobbler, and a non-ugly holo interface.
+* [Watch South Park Episodes][15]. Watch full-length South Park episodes directly from your phone! Browse through your favorite season or search for your favorite episode!
+* [Gas Monitor][16]. An application designed around individuals who keep track of their fill history on their vehicles: from price, gallons, date purchased, and miles traveled.
 
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
@@ -117,18 +117,17 @@ License
 
  [1]: http://cyrilmottier.com/2013/05/24/pushing-the-actionbar-to-the-next-level/
  [2]: https://raw.github.com/ManuelPeinado/FadingActionBar/master/art/readme_pic.png
- [3]: https://github.com/ManuelPeinado/FadingActionBar/tree/master/samples/stock
- [4]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/ScrollViewActivity.java
- [5]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/ListViewActivity.java
- [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/WebViewActivity.java
- [7]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples/stock/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
- [8]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/sample/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
- [9]: http://cyrilmottier.com
- [10]: https://github.com/antoniolg
- [11]: https://github.com/mozarcik/
- [12]: https://play.google.com/store/apps/details?id=com.yavorivanov.android.danswithme 
- [13]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
- [14]: https://play.google.com/store/apps/details?id=com.etheralstudios.weatherize
- [15]: https://play.google.com/store/apps/details?id=com.garli.lastfm
- [16]: https://play.google.com/store/apps/details?id=com.praxis.splol
- [17]: https://play.google.com/store/apps/details?id=com.designloaf.gasmonitor
+ [3]: https://github.com/ManuelPeinado/FadingActionBar/tree/master/samples-stock
+ [4]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples-stock/src/com/manuelpeinado/fadingactionbar/demo/ScrollViewActivity.java
+ [5]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples-stock/src/com/manuelpeinado/fadingactionbar/demo/ListViewActivity.java
+ [6]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples-stock/src/com/manuelpeinado/fadingactionbar/demo/WebViewActivity.java
+ [7]: https://github.com/ManuelPeinado/FadingActionBar/blob/master/samples-stock/src/com/manuelpeinado/fadingactionbar/demo/SampleFragment.java
+ [8]: http://cyrilmottier.com
+ [9]: https://github.com/antoniolg
+ [10]: https://github.com/mozarcik/
+ [11]: https://play.google.com/store/apps/details?id=com.yavorivanov.android.danswithme
+ [12]: https://play.google.com/store/apps/details?id=com.juannale.pearljamlyricsapp
+ [13]: https://play.google.com/store/apps/details?id=com.etheralstudios.weatherize
+ [14]: https://play.google.com/store/apps/details?id=com.garli.lastfm
+ [15]: https://play.google.com/store/apps/details?id=com.praxis.splol
+ [16]: https://play.google.com/store/apps/details?id=com.designloaf.gasmonitor
