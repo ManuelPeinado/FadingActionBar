@@ -5,14 +5,16 @@ dependencies {
     compile "com.android.support:appcompat-v7:[19.0,)"
 } 
  
-android { 
-    compileSdkVersion 19 
-    buildToolsVersion '19' 
- 
-    defaultConfig { 
-        versionName project.VERSION_NAME 
-        versionCode Integer.parseInt(project.VERSION_CODE) 
-    } 
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_COMPILE_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        versionName project.VERSION_NAME
+        versionCode Integer.parseInt(project.VERSION_CODE)
+
+        targetSdkVersion Integer.parseInt(project.ANDROID_TARGET_SDK_VERSION)
+    }
  
     sourceSets { 
         main { 
