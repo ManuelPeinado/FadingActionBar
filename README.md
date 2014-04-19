@@ -73,6 +73,7 @@ Who's using it
 * [Last.fm for Android][14]. Do you think the official Last.fm app feels a little bit outdated? Check out this one! It has a scrobbler, and a non-ugly holo interface.
 * [Watch South Park Episodes][15]. Watch full-length South Park episodes directly from your phone! Browse through your favorite season or search for your favorite episode!
 * [Gas Monitor][16]. An application designed around individuals who keep track of their fill history on their vehicles: from price, gallons, date purchased, and miles traveled.
+* [RSS Reader][17]. Get all your news in a simple and fluid application.
 
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
@@ -131,3 +132,4 @@ License
  [14]: https://play.google.com/store/apps/details?id=com.garli.lastfm
  [15]: https://play.google.com/store/apps/details?id=com.praxis.splol
  [16]: https://play.google.com/store/apps/details?id=com.designloaf.gasmonitor
+ [17]: https://play.google.com/store/apps/details?id=com.simukoni.mobile.rss
