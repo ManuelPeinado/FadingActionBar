@@ -74,6 +74,8 @@ Who's using it
 * [Watch South Park Episodes][15]. Watch full-length South Park episodes directly from your phone! Browse through your favorite season or search for your favorite episode!
 * [Gas Monitor][16]. An application designed around individuals who keep track of their fill history on their vehicles: from price, gallons, date purchased, and miles traveled.
 * [RSS Reader][17]. Get all your news in a simple and fluid application.
+* [Night of the museums][18]. A unique and easy way to be closer to the art and history of the region of Yekaterinburg, Nevyansk, Irbit and Nizhny Tagil (Russia).
+* [Lffl Feed Reader][19]. Lffl feed reader is a free app that allows you to stay up to date on the latest news of your favorite linux blogs using a modern and minimal interface.
 
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
@@ -133,3 +135,5 @@ License
  [15]: https://play.google.com/store/apps/details?id=com.praxis.splol
  [16]: https://play.google.com/store/apps/details?id=com.designloaf.gasmonitor
  [17]: https://play.google.com/store/apps/details?id=com.simukoni.mobile.rss
+ [18]: https://play.google.com/store/apps/details?id=ru.xlebstudio.nightmuseum
+ [19]: https://play.google.com/store/apps/details?id=com.ivanenr.lfflfeedreader
