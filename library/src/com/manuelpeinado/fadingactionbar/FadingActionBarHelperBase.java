@@ -168,7 +168,7 @@ public abstract class FadingActionBarHelperBase {
 
     public void initActionBar(Activity activity) {
         if (mActionBarBackgroundDrawable == null) {
-            mActionBarBackgroundDrawable = activity.getResources().getDrawable(mActionBarBackgroundResId);
+            mActionBarBackgroundDrawable = activity.getResources().getDrawable(mActionBarBackgroundResId).getConstantState().newDrawable();
         }
         setActionBarBackgroundDrawable(mActionBarBackgroundDrawable);
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN) {
