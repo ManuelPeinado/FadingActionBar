@@ -76,6 +76,7 @@ Who's using it
 * [RSS Reader][17]. Get all your news in a simple and fluid application.
 * [Night of the museums][18]. A unique and easy way to be closer to the art and history of the region of Yekaterinburg, Nevyansk, Irbit and Nizhny Tagil (Russia).
 * [Lffl Feed Reader][19]. Lffl feed reader is a free app that allows you to stay up to date on the latest news of your favorite linux blogs using a modern and minimal interface.
+* [Club Douala Ravensburg][20]. This app gives you access to the program of the Club Douala Ravensburg (Germany).
 
 *Does your app use FadingActionBar? If you want to be featured on this list drop me a line.*
 
@@ -137,3 +138,4 @@ License
  [17]: https://play.google.com/store/apps/details?id=com.simukoni.mobile.rss
  [18]: https://play.google.com/store/apps/details?id=ru.xlebstudio.nightmuseum
  [19]: https://play.google.com/store/apps/details?id=com.ivanenr.lfflfeedreader
+ [20]: https://play.google.com/store/apps/details?id=com.mikebdev.douala
