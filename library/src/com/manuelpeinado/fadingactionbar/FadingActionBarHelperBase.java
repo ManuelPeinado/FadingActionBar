@@ -122,9 +122,6 @@ public abstract class FadingActionBarHelperBase {
         if (mContentView == null) {
             mContentView = inflater.inflate(mContentLayoutResId, null);
         }
-        if (mHeaderView == null) {
-            mHeaderView = inflater.inflate(mHeaderLayoutResId, null, false);
-        }
 
         //
         // See if we are in a ListView, WebView or ScrollView scenario
@@ -224,7 +221,7 @@ public abstract class FadingActionBarHelperBase {
 
         mHeaderContainer = (FrameLayout) webViewContainer.findViewById(R.id.fab__header_container);
         initializeGradient(mHeaderContainer);
-        mHeaderContainer.addView(mHeaderView, 0);
+        addHeaderView(mHeaderContainer, mHeaderLayoutResId);
 
         mMarginView = new FrameLayout(webView.getContext());
         mMarginView.setBackgroundColor(Color.TRANSPARENT);
@@ -248,7 +245,8 @@ public abstract class FadingActionBarHelperBase {
         contentContainer.addView(mContentView);
         mHeaderContainer = (FrameLayout) scrollViewContainer.findViewById(R.id.fab__header_container);
         initializeGradient(mHeaderContainer);
-        mHeaderContainer.addView(mHeaderView, 0);
+        addHeaderView(mHeaderContainer, mHeaderLayoutResId);
+
         mMarginView = (FrameLayout) contentContainer.findViewById(R.id.fab__content_top_margin);
 
         return scrollViewContainer;
@@ -266,7 +264,7 @@ public abstract class FadingActionBarHelperBase {
 
         mHeaderContainer = (FrameLayout) contentContainer.findViewById(R.id.fab__header_container);
         initializeGradient(mHeaderContainer);
-        mHeaderContainer.addView(mHeaderView, 0);
+        addHeaderView(mHeaderContainer, mHeaderLayoutResId);
 
         mMarginView = new FrameLayout(listView.getContext());
         mMarginView.setLayoutParams(new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT, 0));
@@ -355,5 +353,12 @@ public abstract class FadingActionBarHelperBase {
             gradient = R.drawable.fab__gradient_light;
         }
         gradientView.setBackgroundResource(gradient);
+    }
+
+    private void addHeaderView(ViewGroup headerContainer, int headerLayoutResId){
+        if (mHeaderView == null) {
+            mHeaderView = mInflater.inflate(headerLayoutResId, headerContainer, false);
+        }
+        headerContainer.addView(mHeaderView, 0);
     }
 }
