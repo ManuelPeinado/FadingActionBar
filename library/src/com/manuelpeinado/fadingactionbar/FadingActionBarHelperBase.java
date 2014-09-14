@@ -157,7 +157,7 @@ public abstract class FadingActionBarHelperBase {
             @Override
             public void onGlobalLayout() {
                 int headerHeight = mHeaderContainer.getHeight();
-                if (!mFirstGlobalLayoutPerformed && headerHeight != 0) {
+                if ((!mFirstGlobalLayoutPerformed || (headerHeight != mLastHeaderHeight)) && headerHeight != 0) {
                     updateHeaderHeight(headerHeight);
                     mFirstGlobalLayoutPerformed = true;
                 }
