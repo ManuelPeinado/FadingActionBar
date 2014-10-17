@@ -53,6 +53,7 @@ public abstract class FadingActionBarHelperBase {
     private View mContentView;
     private LayoutInflater mInflater;
     private boolean mLightActionBar;
+    private boolean mActionBarGradient = true;
     private boolean mUseParallax = true;
     private int mLastDampedScroll;
     private int mLastHeaderHeight = -1;
@@ -102,6 +103,11 @@ public abstract class FadingActionBarHelperBase {
 
     public final <T extends FadingActionBarHelperBase> T lightActionBar(boolean value) {
         mLightActionBar = value;
+        return (T)this;
+    }
+
+    public final <T extends FadingActionBarHelperBase> T gradientActionBar(boolean value) {
+        mActionBarGradient = value;
         return (T)this;
     }
 
@@ -350,6 +356,9 @@ public abstract class FadingActionBarHelperBase {
 
     private void initializeGradient(ViewGroup headerContainer) {
         View gradientView = headerContainer.findViewById(R.id.fab__gradient);
+        if(mActionBarGradient == false) {
+            return;
+        }
         int gradient = R.drawable.fab__gradient;
         if (mLightActionBar) {
             gradient = R.drawable.fab__gradient_light;
