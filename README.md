@@ -1,4 +1,5 @@
-FadingActionBar
+[![AndroidLibs](https://img.shields.io/badge/AndroidLibs-FadingActionBar-brightgreen.svg?style=flat)](https://www.android-libs.com/lib/fadingactionbar?utm_source=github-badge&utm_medium=github-badge&utm_campaign=github-badge)
+			FadingActionBar
 ==================
 
 FadingActionBar is a library which implements the cool fading action bar effect that can be seen in the new Play Music app.
